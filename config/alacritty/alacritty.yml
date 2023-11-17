@@ -1,0 +1,85 @@
+live_config_reload: true
+window:
+  dynamic_title: true
+  dimensions:
+    columns: 140
+    lines: 40
+  opacity: 0.90
+  padding:
+    x: 8
+    y: 8
+  # https://github.com/zellij-org/zellij/issues/2051#issuecomment-1461519892
+  option_as_alt: Both
+
+cursor:
+  style:
+    shape: Block #(Block, Underline, Beam)
+    blinking: Always
+  unfocused_hollow: true
+  blink_interval: 400
+scrolling:
+  history: 10000
+env:
+  TERM: xterm-256color
+font:
+  size: 13.5
+  normal:
+    family: "HackGen"
+    style: Regular
+  bold:
+    family: "HackGen"
+    style: Bold
+  offset:
+    x: 2
+    y: 4
+  glyph_offset:
+    x: 0
+    y: 0
+  draw_bold_text_with_bright_colors: true
+
+# https://github.com/huyvohcmc/tender-alacritty
+colors:
+  primary:
+    background: '0x282828'
+    foreground: '0xeeeeee'
+  normal:
+    black: '0x282828'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xeeeeee'
+  bright:
+    black: '0x4c4c4c'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xfeffff'
+
+hints:
+  enabled:
+   - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+     hyperlinks: true
+     command: open
+     post_processing: true
+     mouse:
+       enabled: true
+       mods: Shift
+     binding:
+       key: U
+       mods: Control|Shift
+
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "zellij attach --index 0 -c"
+key_bindings:
+  - { key: Return, mods: Command, action: ToggleSimpleFullscreen }
