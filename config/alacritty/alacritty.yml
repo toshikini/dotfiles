@@ -80,6 +80,6 @@ shell:
   args:
     - -l
     - -c
-    - "zellij attach --index 0 -c"
+    - "/opt/homebrew/bin/zellij attach --index 0 -c"
 key_bindings:
   - { key: Return, mods: Command, action: ToggleSimpleFullscreen }

@@ -206,7 +206,7 @@ autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.A
 
 " https://github.com/tani/vim-jetpack を自動インストール
 " https://github.com/tani/vim-jetpack#automatic-installation-on-startup を参考
-let s:jetpackfile = expand('<sfile>:p:h') .. '/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
+let s:jetpackfile = '~/.vim/pack/jetpack/opt/vim-jetpack/plugin/jetpack.vim'
 let s:jetpackurl = "https://raw.githubusercontent.com/tani/vim-jetpack/master/plugin/jetpack.vim"
 if !filereadable(s:jetpackfile)
   call system(printf('curl -fsSLo %s --create-dirs %s', s:jetpackfile, s:jetpackurl))

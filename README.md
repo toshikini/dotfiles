@@ -16,3 +16,17 @@ ln -s dotfiles/zshrc ~/.zshrc
 cd dotfiles
 brew bundle
 ```
+
+```
+ln -s dotfiles/vimrc .vimrc
+```
+
+```
+ln -s dotfiles/hammerspoon ~/.hammerspoon
+```
+
+
+```
+ln -s dotfiles/gitconfig ~/.gitconfig
+```
+
