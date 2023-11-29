@@ -129,11 +129,18 @@ esac
 
 # projectコマンド
 # ローカルリポジトリの一覧を表示して選択をしたリポジトリパスに移動をする
+# 下記の記事を参考に
+# https://blog.abekoh.dev/posts/shell-2023
 project () {
   local project_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
   if [ -z "$project_path" ]; then
     return
   fi
-  cd $project_path
+  local project_name=$(echo "$(basename $(dirname $project_path))/$(basename $project_path)" | sed -e 's/\./_/g')
+  if zellij action query-tab-names | grep -Fxq $project_name; then
+    zellij action go-to-tab-name $project_name
+  else
+    zellij action new-tab --layout project --name $project_name --cwd $project_path
+  fi
 }
 
