@@ -8,6 +8,8 @@ export VOLTA_HOME="$HOME/.volta"
 # voltaでpnpmを使う。pnpmは実験的機能なのでこの設定が必要
 export VOLTA_FEATURE_PNPM=1
 
+export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
+
 
 #################################
 # PATH
@@ -31,11 +33,12 @@ eval "$(sheldon source)"
 # zshのプロンプトをかっこよくする
 eval "$(starship init zsh)"
 
-
 # pyenvとvirtualenvを有効にする
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 
+# asdfを読み込む
+source $(brew --prefix asdf)/libexec/asdf.sh
 
 #################################
 # history
@@ -68,6 +71,9 @@ bindkey '^F' forward-word
 #################################
 # 入力補完
 #################################
+
+# asdfの補完パスをfpath(zsh用のシェル関数や補完関数を探すディレクトリ)に追加
+fpath+=($(brew --prefix asdf)/etc/bash_completion.d)
 
 # completion
 autoload -Uz compinit
@@ -123,11 +129,11 @@ esac
 
 # projectコマンド
 # ローカルリポジトリの一覧を表示して選択をしたリポジトリパスに移動をする
-prject () {
-  local prject_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
-  if [ -z "$prject_path" ]; then
+project () {
+  local project_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
+  if [ -z "$project_path" ]; then
     return
   fi
-  cd $prject_path
+  cd $project_path
 }
 

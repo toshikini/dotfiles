@@ -1,9 +1,9 @@
 live_config_reload: true
 window:
   dynamic_title: true
-  dimensions:
-    columns: 140
-    lines: 40
+  # dimensions:
+    # columns: 140
+    # lines: 40
   opacity: 0.90
   padding:
     x: 8
