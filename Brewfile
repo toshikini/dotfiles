@@ -101,8 +101,9 @@ brew "asdf"
 brew "vim"
 
 # Escで入力モードを抜ける時に日本語入力から英字入力に戻すためにim-selectを入れる
-tap "daipeihust/tap"
-brew "daipeihust/tap/im-select"
+# hammerspoonで設定したので不要
+# tap "daipeihust/tap"
+# brew "daipeihust/tap/im-select"
 
 
 ############################
@@ -141,7 +142,8 @@ cask "keepingyouawake"
 # 英字キーボードでCmd単体で押した時に日本語キーボードの
 # 「英数」「かな」キーのように入力方法を切り替える
 # 今どっちの入力だったかわからないというのを解消する
-cask "cmd-eikana"
+# hammerspoonで設定したので不要
+# cask "cmd-eikana"
 
 
 
@@ -149,11 +151,11 @@ cask "cmd-eikana"
 # タイル型ウインドウマネージャー yabai
 ############################
 
-tap "koekeishiya/formulae"
-brew "yabai"
+# tap "koekeishiya/formulae"
+# brew "yabai"
 
 # yabaiをショートカットで使うために入れる
-brew "skhd"
+# brew "skhd"
 
 
 ############################
@@ -189,7 +191,8 @@ brew "mas"
 
 # ウインド操作を簡単にするために
 # 昔から入れてるけど別のアプリで代替できるのではないかと思ってる
-mas "BetterSnapTool", id: 417375580
+# hammerspoonで設定したので不要
+# mas "BetterSnapTool", id: 417375580
 
 # Adobe Creative Cloudを入れると重たくなるので
 # LightroomはApp Store経由で入れる
