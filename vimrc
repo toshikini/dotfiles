@@ -196,9 +196,10 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 
 " 日本語入力後にインサートモードを抜けると自動でIMEを無効にする
 " IMEをコマンド経由で変更できるim-selectというソフトウェアが必要
+" hammerspoonで実現したのでコメントアウト (2023-12-01)
 " brew tap daipeihust/tap
 " brew install im-select
-autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
+" autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
 
 """""""""""""""""""""""""""""""""""""
 " プラグインマネジャー vim-jetpack

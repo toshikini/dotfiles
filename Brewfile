@@ -152,6 +152,9 @@ cask "cmd-eikana"
 tap "koekeishiya/formulae"
 brew "yabai"
 
+# yabaiをショートカットで使うために入れる
+brew "skhd"
+
 
 ############################
 # Cask Application
