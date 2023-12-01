@@ -41,9 +41,14 @@ end):start()
 local function keyCode(key, modifiers)
   modifiers = modifiers or {}
   return function()
-    hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
-    hs.timer.usleep(1000)
-    hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
+    -- 特定のアプリケーションの時のみ除外する
+    -- ターミナルでは、ctrl + l を元々のターミナルリセットとして動作させたいので除外
+    local frontApp = hs.window.frontmostWindow():application():title()
+    if frontApp ~= "Alacritty" then
+      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
+      hs.timer.usleep(1000)
+      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
+    end
   end
 end
 
