@@ -38,17 +38,13 @@ end):start()
 
 -- ←↑→↓をCtrl+hjklでやる
 -- Shift押しながらテキスト選択などもできるように複数の修飾キーを設定
+--[[
 local function keyCode(key, modifiers)
   modifiers = modifiers or {}
   return function()
-    -- 特定のアプリケーションの時のみ除外する
-    -- ターミナルでは、ctrl + l を元々のターミナルリセットとして動作させたいので除外
-    local frontApp = hs.window.frontmostWindow():application():title()
-    if frontApp ~= "Alacritty" then
-      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
-      hs.timer.usleep(1000)
-      hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
-    end
+    hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), true):post()
+    hs.timer.usleep(1000)
+    hs.eventtap.event.newKeyEvent(modifiers, string.lower(key), false):post()
   end
 end
 
@@ -90,6 +86,83 @@ remapKey({'ctrl', 'cmd', 'alt'}, 'h', keyCode('left', {'cmd', 'alt'}))
 remapKey({'ctrl', 'cmd', 'alt'}, 'j', keyCode('down', {'cmd', 'alt'}))
 remapKey({'ctrl', 'cmd', 'alt'}, 'k', keyCode('up', {'cmd', 'alt'}))
 remapKey({'ctrl', 'cmd', 'alt'}, 'l', keyCode('right', {'cmd', 'alt'}))
+]]
+
+-- グローバル変数でイベントリスナーを保持
+if not eventtapListeners then
+  eventtapListeners = {}
+end
+
+-- 既存のイベントリスナーを停止する関数
+local function stopExistingListeners()
+  for _, listener in ipairs(eventtapListeners) do
+    listener:stop()
+  end
+  -- リスナーのリストをクリア
+  eventtapListeners = {}
+end
+
+-- 新しいリマップ関数
+local function remapKey(modifiers, key, remappedKey, remappedModifiers)
+  remappedModifiers = remappedModifiers or {}
+  local listener = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp}, function(event)
+    local keyCode = event:getKeyCode()
+    local flags = event:getFlags()
+    local isDown = event:getType() == hs.eventtap.event.types.keyDown
+    local frontApp = hs.window.frontmostWindow():application():title()
+
+    if frontApp == "Alacritty" then
+      return false -- Alacrittyの時は処理をスキップ
+    end
+
+    if keyCode == hs.keycodes.map[key] and flags:containExactly(modifiers) then
+      local newKeyEvent = hs.eventtap.event.newKeyEvent(remappedModifiers, hs.keycodes.map[remappedKey], isDown)
+      newKeyEvent:post()
+      return true
+    end
+  end)
+  table.insert(eventtapListeners, listener) -- リスナーをリストに追加
+  listener:start()
+end
+
+-- 既存のリスナーを停止
+stopExistingListeners()
+
+remapKey({'ctrl'}, 'h', 'left')
+remapKey({'ctrl'}, 'j', 'down')
+remapKey({'ctrl'}, 'k', 'up')
+remapKey({'ctrl'}, 'l', 'right')
+
+remapKey({'ctrl', 'shift'}, 'h', 'left', {'shift'})
+remapKey({'ctrl', 'shift'}, 'j', 'down', {'shift'})
+remapKey({'ctrl', 'shift'}, 'k', 'up', {'shift'})
+remapKey({'ctrl', 'shift'}, 'l', 'right', {'shift'})
+
+remapKey({'ctrl', 'cmd'}, 'h', 'left', {'cmd'})
+remapKey({'ctrl', 'cmd'}, 'j', 'down', {'cmd'})
+remapKey({'ctrl', 'cmd'}, 'k', 'up', {'cmd'})
+remapKey({'ctrl', 'cmd'}, 'l', 'right', {'cmd'})
+
+remapKey({'ctrl', 'shift', 'cmd'}, 'h', 'left', {'shift', 'cmd'})
+remapKey({'ctrl', 'shift', 'cmd'}, 'j', 'down', {'shift', 'cmd'})
+remapKey({'ctrl', 'shift', 'cmd'}, 'k', 'up', {'shift', 'cmd'})
+remapKey({'ctrl', 'shift', 'cmd'}, 'l', 'right', {'shift', 'cmd'})
+
+remapKey({'ctrl', 'alt'}, 'h', 'left', {'alt'})
+remapKey({'ctrl', 'alt'}, 'j', 'down', {'alt'})
+remapKey({'ctrl', 'alt'}, 'k', 'up', {'alt'})
+remapKey({'ctrl', 'alt'}, 'l', 'right', {'alt'})
+
+remapKey({'ctrl', 'shift', 'alt'}, 'h', 'left', {'shift', 'alt'})
+remapKey({'ctrl', 'shift', 'alt'}, 'j', 'down', {'shift', 'alt'})
+remapKey({'ctrl', 'shift', 'alt'}, 'k', 'up', {'shift', 'alt'})
+remapKey({'ctrl', 'shift', 'alt'}, 'l', 'right', {'shift', 'alt'})
+
+remapKey({'ctrl', 'cmd', 'alt'}, 'h', 'left', {'cmd', 'alt'})
+remapKey({'ctrl', 'cmd', 'alt'}, 'j', 'down', {'cmd', 'alt'})
+remapKey({'ctrl', 'cmd', 'alt'}, 'k', 'up', {'cmd', 'alt'})
+remapKey({'ctrl', 'cmd', 'alt'}, 'l', 'right', {'cmd', 'alt'})
+
 
 
 -- 特定のアプリケーションをショートカットで起動
@@ -215,3 +288,6 @@ kanaSwitcher = hs.eventtap.new(
   kanaSwitchEvent
 )
 kanaSwitcher:start()
+
+
+
