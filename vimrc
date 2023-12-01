@@ -194,6 +194,7 @@ nnoremap S "_S
 vnoremap S "_S
 xnoremap <expr> p 'pgv"'.v:register.'y`>'
 
+
 " 日本語入力後にインサートモードを抜けると自動でIMEを無効にする
 " IMEをコマンド経由で変更できるim-selectというソフトウェアが必要
 " hammerspoonで実現したのでコメントアウト (2023-12-01)
@@ -218,4 +219,7 @@ packadd vim-jetpack
 call jetpack#begin()
   "https://github.com/tani/vim-jetpack
   Jetpack 'tani/vim-jetpack', {'opt': 1}
+  Jetpack 'github/copilot.vim'
 call jetpack#end()
+
+

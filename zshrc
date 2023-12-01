@@ -3,10 +3,10 @@
 #################################
 
 # volta
-export VOLTA_HOME="$HOME/.volta"
+# export VOLTA_HOME="$HOME/.volta"
 
 # voltaでpnpmを使う。pnpmは実験的機能なのでこの設定が必要
-export VOLTA_FEATURE_PNPM=1
+# export VOLTA_FEATURE_PNPM=1
 
 export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
 
@@ -121,6 +121,13 @@ linux*)
   alias ls='ls -h --color=always'
   ;;
 esac
+
+# cdと同時にls
+function cdls() {
+  \cd $1;
+  ls;
+}
+alias cd=cdls
 
 
 #################################

@@ -38,6 +38,7 @@ window:
   # To make Option key act as Alt key on Macos
   # https://github.com/zellij-org/zellij/issues/2051#issuecomment-1461519892
   option_as_alt: Both
+  alt_send_esc: false
 
 
 scrolling:
