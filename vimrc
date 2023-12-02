@@ -202,6 +202,20 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 " brew install im-select
 " autocmd InsertLeave * :silent !/opt/homebrew/bin/im-select com.apple.keylayout.ABC
 
+
+" 複数画面の移動をスペースで
+nmap <Space> <C-w>w
+
+" 画面サイズの変更は矢印でも
+nmap <C-w><left> <C-w><
+nmap <C-w><right> <C-w>>
+nmap <C-w><up> <C-w>+
+nmap <C-w><down> <C-w>-
+
+" ;でコマンドモードに入る
+nnoremap ; :
+
+
 """""""""""""""""""""""""""""""""""""
 " プラグインマネジャー vim-jetpack
 """""""""""""""""""""""""""""""""""""

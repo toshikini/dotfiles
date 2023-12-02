@@ -290,4 +290,3 @@ kanaSwitcher = hs.eventtap.new(
 kanaSwitcher:start()
 
 
-
