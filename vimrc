@@ -40,6 +40,9 @@ set backspace=indent,eol,start
 " 上下n行見える状態でスクロール
 set scrolloff=5
 
+" マウスでカーソル移動
+set mouse=a
+
 
 """""""""""""""""""""""""""""""""""""
 " 表示
@@ -84,18 +87,8 @@ syntax enable
 " コメントの色を指定
 hi Comment ctermfg=gray
 
-
-"""""""""""""""""""""""""""""""""""""
-" ステータス表示
-"""""""""""""""""""""""""""""""""""""
-
-" ステータスラインのフォーマット
-set statusline=%n\:%y%F\ \|%{(&fenc!=''?&fenc:&enc).'\|'.&ff.'\|'}%m%r%=<%l/%L:%p%%>
-
 " ステータスラインを常に表示
 set laststatus=2
-
-highlight StatusLine term=NONE cterm=NONE ctermfg=black ctermbg=white
 
 
 """""""""""""""""""""""""""""""""""""
@@ -215,6 +208,18 @@ nmap <C-w><down> <C-w>-
 " ;でコマンドモードに入る
 nnoremap ; :
 
+" カーソルのあるウインドウを最大化する
+nnoremap <Space>o    <C-W>o
+
+" カーソルのあるウインドウを隠す
+nnoremap <silent><Space>h    :hide<CR>
+
+" ファイル保存:バッファ変更時のみ保存
+nnoremap <silent><Space>s    :<C-u>w<CR>
+
+" 直近開いたファイルを開く
+nnoremap <Leader>e  :<C-u>/ oldfiles<Home>browse filter /
+
 
 """""""""""""""""""""""""""""""""""""
 " プラグインマネジャー vim-jetpack
@@ -233,9 +238,95 @@ packadd vim-jetpack
 call jetpack#begin()
   "https://github.com/tani/vim-jetpack
   Jetpack 'tani/vim-jetpack', {'opt': 1}
+
+  " Copilotをvimで使えるようにする
   Jetpack 'github/copilot.vim'
+
+  " ステータスラインをカスタマイズ
+  Jetpack 'itchyny/lightline.vim'
+
+  " バッファをタブとして表示
+  Jetpack 'mengelbrecht/lightline-bufferline'
+
+  " gitの操作をvimで行えるようにする
+  " ステータスラインにブランチを表示するために使用
+  Jetpack 'tpope/vim-fugitive'
+
+  " Pure Vimscriptで書かれたLSPクライアント
+  " vim-lsp-settingsを書いたmattnさんの記事をみて導入
+  " https://qiita.com/mattn/items/e62b9f16bc487a271a7f
+  Jetpack 'prabirshrestha/vim-lsp'
+  Jetpack 'mattn/vim-lsp-settings'
+
+  " LSPの補完
+  Jetpack 'prabirshrestha/asyncomplete.vim'
+  Jetpack 'prabirshrestha/asyncomplete-lsp.vim'
+
+  " ほぼ全てのフォーマットを網羅してるsyntax highlight
+  Jetpack 'sheerun/vim-polyglot'
+
+  " Python
+  " PEP8に準拠したインデント
+  Jetpack 'Vimjas/vim-python-pep8-indent'
 call jetpack#end()
 
+
+"""""""""""""""""""""""""""""""""""""
+" 'itchyny/lightline.vim'の設定
+"""""""""""""""""""""""""""""""""""""
+
+let g:lightline = {
+\     'colorscheme': 'wombat',
+\     'active': {
+\       'left': [
+\         ['mode', 'paste'],
+\         ['gitbranch', 'readonly', 'filename', 'modified'],
+\       ],
+\       'right': [
+\         ['lsp_errors', 'lsp_warnings', 'lsp_ok'],
+\         ['lineinfo', 'syntastic'],
+\         ['percent'],
+\         ['charcode', 'fileformat', 'fileencoding', 'filetype'],
+\       ]
+\     },
+\     'component_function': {
+\       'gitbranch': 'FugitiveHead',
+\       'lsp_warnings': 'LightlineLSPWarnings',
+\       'lsp_errors':   'LightlineLSPErrors',
+\       'lsp_ok':       'LightlineLSPOk',
+\     },
+\     'component_type': {
+\       'lsp_warnings': 'warning',
+\       'lsp_errors':   'error',
+\       'lsp_ok':       'middle',
+\     },
+\   }
+
+" vim-lspの結果をステータスラインに表示する
+function! LightlineLSPWarnings() abort
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  return l:counts.warning == 0 ? '' : printf('W:%d', l:counts.warning)
+endfunction
+
+function! LightlineLSPErrors() abort
+  let l:counts = lsp#get_buffer_diagnostics_counts()
+  return l:counts.error == 0 ? '' : printf('E:%d', l:counts.error)
+endfunction
+
+function! LightlineLSPOk() abort
+  let l:counts =  lsp#get_buffer_diagnostics_counts()
+  let l:total = l:counts.error + l:counts.warning
+  return l:total == 0 ? 'OK' : ''
+endfunction
+
+" tablineの設定
+" 常にタブを表示する
+set showtabline=2
+
+" タブの表示をカスタマイズ
+let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 """""""""""""""""""""""""""""""""""""
 " lfを使うための設定
@@ -261,4 +352,32 @@ endfunction
 command! -bar LF call LF()
 
 " lfを起動するキーバインド
-nnoremap <leader>l :LF<cr>
+nnoremap <leader>f :LF<cr>
+
+
+
+"""""""""""""""""""""""""""""""""""""
+" bufferの操作
+" 'bagrat/vim-buffet'を使用する
+"""""""""""""""""""""""""""""""""""""
+noremap <Tab> :bn<CR>
+noremap <S-Tab> :bp<CR>
+noremap <Leader><Tab> :Bw<CR>
+noremap <Leader><S-Tab> :Bw!<CR>
+nmap <leader>1 <Plug>BuffetSwitch(1)
+nmap <leader>2 <Plug>BuffetSwitch(2)
+nmap <leader>3 <Plug>BuffetSwitch(3)
+nmap <leader>4 <Plug>BuffetSwitch(4)
+nmap <leader>5 <Plug>BuffetSwitch(5)
+nmap <leader>6 <Plug>BuffetSwitch(6)
+nmap <leader>7 <Plug>BuffetSwitch(7)
+nmap <leader>8 <Plug>BuffetSwitch(8)
+nmap <leader>9 <Plug>BuffetSwitch(9)
+nmap <leader>0 <Plug>BuffetSwitch(10)
+
+"""""""""""""""""""""""""""""""""""""
+" 'prabirshrestha/asyncomplete.vim'
+"""""""""""""""""""""""""""""""""""""
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
