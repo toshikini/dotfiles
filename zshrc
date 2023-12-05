@@ -10,6 +10,8 @@
 
 export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
 
+# gitにpushしたくない環境変数は別ファイルに書いて.zshrcからインポート
+source ~/.env
 
 #################################
 # PATH
@@ -74,6 +76,9 @@ bindkey '^F' forward-word
 
 # asdfの補完パスをfpath(zsh用のシェル関数や補完関数を探すディレクトリ)に追加
 fpath+=($(brew --prefix asdf)/etc/bash_completion.d)
+
+# brewの補完パスをfpathに追加
+fpath+=($(brew --prefix)/share/zsh/site-functions)
 
 # completion
 autoload -Uz compinit

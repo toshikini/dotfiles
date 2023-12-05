@@ -242,6 +242,14 @@ call jetpack#begin()
   " Copilotをvimで使えるようにする
   Jetpack 'github/copilot.vim'
 
+  " ChatGPTをvimで使えるようにする
+  " denoが必要なのでasdfでdenoを入れておく
+  " asdf plugin-add deno
+  " asdf install deno latest
+  " asdf global deno latest
+  Jetpack 'vim-denops/denops.vim'
+  Jetpack 'takavfx/gptwriter.vim'
+
   " ステータスラインをカスタマイズ
   Jetpack 'itchyny/lightline.vim'
 
@@ -328,6 +336,7 @@ let g:lightline.tabline = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
 let g:lightline.component_type   = {'buffers': 'tabsel'}
 
+
 """""""""""""""""""""""""""""""""""""
 " lfを使うための設定
 """""""""""""""""""""""""""""""""""""
@@ -364,16 +373,7 @@ noremap <Tab> :bn<CR>
 noremap <S-Tab> :bp<CR>
 noremap <Leader><Tab> :Bw<CR>
 noremap <Leader><S-Tab> :Bw!<CR>
-nmap <leader>1 <Plug>BuffetSwitch(1)
-nmap <leader>2 <Plug>BuffetSwitch(2)
-nmap <leader>3 <Plug>BuffetSwitch(3)
-nmap <leader>4 <Plug>BuffetSwitch(4)
-nmap <leader>5 <Plug>BuffetSwitch(5)
-nmap <leader>6 <Plug>BuffetSwitch(6)
-nmap <leader>7 <Plug>BuffetSwitch(7)
-nmap <leader>8 <Plug>BuffetSwitch(8)
-nmap <leader>9 <Plug>BuffetSwitch(9)
-nmap <leader>0 <Plug>BuffetSwitch(10)
+
 
 """""""""""""""""""""""""""""""""""""
 " 'prabirshrestha/asyncomplete.vim'
@@ -381,3 +381,24 @@ nmap <leader>0 <Plug>BuffetSwitch(10)
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+
+
+"""""""""""""""""""""""""""""""""""""
+" Copilot
+"""""""""""""""""""""""""""""""""""""
+
+" markdwon, gitcommitでもcopilotを使えるようにする
+let g:copilot_filetypes = {'markdown': v:true, 'gitcommit': v:true}
+
+
+"""""""""""""""""""""""""""""""""""""
+" 'takavfx/gptwriter.vim'
+"""""""""""""""""""""""""""""""""""""
+
+" ChatGPTのAPIキーを設定
+" APIキーを環境変数に設定してvimrcから参照
+let g:gptwriter_key = $OPENAI_API_KEY
+
+
+
