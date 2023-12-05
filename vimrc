@@ -256,6 +256,16 @@ call jetpack#begin()
   " バッファをタブとして表示
   Jetpack 'mengelbrecht/lightline-bufferline'
 
+  " インデントをみやすくする
+  Jetpack 'nathanaelkane/vim-indent-guides'
+
+  " マークを使いやすくする
+  " https://momozo.tech/2021/02/27/vim%E3%83%9E%E3%83%BC%E3%82%AF%E3%81%93%E3%81%9Dvim%E3%81%AEvim%E3%81%9F%E3%82%8B%E6%89%80%E4%BB%A5/
+  Jetpack 'MattesGroeger/vim-bookmarks'
+
+  " :wしなくても自動保存
+  Jetpack 'vim-scripts/vim-auto-save'
+
   " gitの操作をvimで行えるようにする
   " ステータスラインにブランチを表示するために使用
   Jetpack 'tpope/vim-fugitive'
@@ -401,4 +411,51 @@ let g:copilot_filetypes = {'markdown': v:true, 'gitcommit': v:true}
 let g:gptwriter_key = $OPENAI_API_KEY
 
 
+"""""""""""""""""""""""""""""""""""""
+" 'MattesGroeger/vim-bookmarks'
+"""""""""""""""""""""""""""""""""""""
+
+" maして表示したバッファを自動で閉じる
+let g:bookmark_auto_close = 1
+
+
+"""""""""""""""""""""""""""""""""""""
+" 'nathanaelkane/vim-indent-guides'
+"""""""""""""""""""""""""""""""""""""
+
+" デフォルトでの有効化
+let g:indent_guides_enable_on_vim_startup = 1
+
+" インデントマークが付き始める最低の深さ
+let g:indent_guides_start_level = 1
+
+" インデントマークのスペース幅
+let g:indent_guides_guide_size = 1
+
+" 除外するファイルタイプ
+let g:indent_guides_exclude_filetypes = ['help', 'tagbar']
+
+
+"""""""""""""""""""""""""""""""""""""
+" 'vim-scripts/vim-auto-save'
+"""""""""""""""""""""""""""""""""""""
+
+" 自動保存を有効化
+let g:auto_save = 1
+
+
+"""""""""""""""""""""""""""""""""""""
+" 'vim-lsp'
+"""""""""""""""""""""""""""""""""""""
+
+" vim-lspでよく使うコマンドのキーバインド
+" https://blog.micheam.com/2019/05/21/vim-lsp-setting-for-typescript/
+nmap gd <Plug>(lsp-definition)
+nmap gi <Plug>(lsp-implementation)
+nmap gr <plug>(lsp-references)
+nmap <buffer> <C-n> <plug>(lsp-next-error)
+nmap <buffer> <C-p> <plug>(lsp-previous-error)
+nmap <buffer> <Leader>r <plug>(lsp-rename)
+nmap <buffer> K <Plug>(lsp-hover)
+nmap <buffer> <Leader>= <plug>(lsp-document-format)
 

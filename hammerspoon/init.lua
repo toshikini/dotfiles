@@ -199,62 +199,62 @@ local prefix = {"cmd", "ctrl"}
 
 -- Command + Ctrl + ↑ : フルスクリーン
 hs.hotkey.bind(prefix, "Up", function()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
 
-    f.x = max.x + 20
-    f.y = max.y + 20
-    f.w = max.w - 40
-    f.h = max.h - 40
+  f.x = max.x + 20
+  f.y = max.y + 20
+  f.w = max.w - 40
+  f.h = max.h - 40
 
-    win:setFrame(f)
+  win:setFrame(f)
 end)
 
 -- Command + Ctrl + ← : ウィンドウ左寄せ
 hs.hotkey.bind(prefix, "Left", function()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
 
-    f.x = max.x + 20
-    f.y = max.y + 20
-    f.w = max.w * 0.6 - 30
-    f.h = max.h - 40
+  f.x = max.x + 20
+  f.y = max.y + 20
+  f.w = max.w * 0.6 - 30
+  f.h = max.h - 40
 
-    win:setFrame(f)
+  win:setFrame(f)
 end)
 
 -- Command + Ctrl + → : ウィンドウ右寄せ
 hs.hotkey.bind(prefix, "Right", function()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
 
-    f.x = max.x + (max.w * 0.6) + 10
-    f.y = max.y + 20
-    f.w = max.w * 0.4 - 30
-    f.h = max.h - 40
+  f.x = max.x + (max.w * 0.6) + 10
+  f.y = max.y + 20
+  f.w = max.w * 0.4 - 30
+  f.h = max.h - 40
 
-    win:setFrame(f)
+  win:setFrame(f)
 end)
 
 -- Command + Ctrl + ↓ : 中央にウインドウを縮小して配置
 hs.hotkey.bind(prefix, "Down", function()
-    local win = hs.window.focusedWindow()
-    local f = win:frame()
-    local screen = win:screen()
-    local max = screen:frame()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
 
-    f.x = max.x + (max.w * 0.2)
-    f.y = max.y + (max.h * 0.2)
-    f.w = max.w * 0.6 
-    f.h = max.h * 0.6
+  f.x = max.x + (max.w * 0.2)
+  f.y = max.y + (max.h * 0.2)
+  f.w = max.w * 0.6 
+  f.h = max.h * 0.6
 
-    win:setFrame(f)
+  win:setFrame(f)
 end)
 
 
