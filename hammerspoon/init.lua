@@ -88,6 +88,7 @@ remapKey({'ctrl', 'cmd', 'alt'}, 'k', keyCode('up', {'cmd', 'alt'}))
 remapKey({'ctrl', 'cmd', 'alt'}, 'l', keyCode('right', {'cmd', 'alt'}))
 ]]
 
+-- 特定のアプリケーション以外でのみキーバーインドを有効にする
 -- グローバル変数でイベントリスナーを保持
 if not eventtapListeners then
   eventtapListeners = {}
@@ -203,10 +204,10 @@ hs.hotkey.bind(prefix, "Up", function()
     local screen = win:screen()
     local max = screen:frame()
 
-    f.x = max.x + 16
-    f.y = max.y + 16
-    f.w = max.w - 32
-    f.h = max.h - 32
+    f.x = max.x + 20
+    f.y = max.y + 20
+    f.w = max.w - 40
+    f.h = max.h - 40
 
     win:setFrame(f)
 end)
@@ -218,25 +219,25 @@ hs.hotkey.bind(prefix, "Left", function()
     local screen = win:screen()
     local max = screen:frame()
 
-    f.x = max.x + 16
-    f.y = max.y + 16
-    f.w = max.w / 2 - 24
-    f.h = max.h - 32
+    f.x = max.x + 20
+    f.y = max.y + 20
+    f.w = max.w * 0.6 - 30
+    f.h = max.h - 40
 
     win:setFrame(f)
 end)
 
--- Command + Ctrl + ← : ウィンドウ右寄せ
+-- Command + Ctrl + → : ウィンドウ右寄せ
 hs.hotkey.bind(prefix, "Right", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
     local max = screen:frame()
 
-    f.x = max.x + (max.w / 2) + 8
-    f.y = max.y + 16
-    f.w = max.w / 2 -24
-    f.h = max.h - 32
+    f.x = max.x + (max.w * 0.6) + 10
+    f.y = max.y + 20
+    f.w = max.w * 0.4 - 30
+    f.h = max.h - 40
 
     win:setFrame(f)
 end)
