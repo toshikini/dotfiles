@@ -36,6 +36,24 @@ switchToEisuOnEscape = hs.eventtap.new({hs.eventtap.event.types.keyDown}, functi
 end):start()
 
 
+-- アプリケーションを切り替えた時に英字入力に切り替える
+-- https://www.hammerspoon.org/go/#appevents
+-- 上記を参考に実装
+function applicationWatcher(appName, eventType, appObject)
+  if (eventType == hs.application.watcher.deactivated) then
+    hs.timer.doAfter(0.2, function()
+      local keyEvent = hs.eventtap.event.newKeyEvent("eisu", true)
+      keyEvent:post()
+      hs.timer.usleep(1000)
+      keyEvent:setType(hs.eventtap.event.types.keyUp)
+      keyEvent:post()
+    end)
+  end
+end
+appWatcher = hs.application.watcher.new(applicationWatcher)
+appWatcher:start()
+
+
 -- ←↑→↓をCtrl+hjklでやる
 -- Shift押しながらテキスト選択などもできるように複数の修飾キーを設定
 --[[
