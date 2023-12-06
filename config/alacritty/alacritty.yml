@@ -91,3 +91,5 @@ shell:
     - -c
     - "/opt/homebrew/bin/zellij attach --index 0 -c"
 
+key_bindings:
+  - { key: F, mods: Command|Control, action: ToggleSimpleFullscreen }
