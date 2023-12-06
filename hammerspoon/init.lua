@@ -1,3 +1,7 @@
+-- hammerspoonの設定ファイルが変更になったら自動でリロード
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
+
+
 -- Ctrl 2回でalacrittyを起動
 local double_press = require("ctrlDoublePress")
 local open_alacritty = function()
@@ -28,9 +32,13 @@ hs.hotkey.bind('alt','tab','Next window',function()switcher:next()end)
 hs.hotkey.bind('alt-shift','tab','Prev window',function()switcher:previous()end)
 
 
--- Escで英字入力に切り替える
+-- 特定のキーで英字入力に切り替える
+-- Escapeキー vimでノーマルモードに戻る時に英字入力にする
+-- Cmd + Spaceキー Alfredを起動した時に英字入力にする
 switchToEisuOnEscape = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
   if hs.keycodes.map[e:getKeyCode()] == 'escape' then
+    hs.eventtap.keyStroke({}, 'eisu', 0)
+  elseif e:getFlags()['cmd'] and hs.keycodes.map[e:getKeyCode()] == 'space' then
     hs.eventtap.keyStroke({}, 'eisu', 0)
   end
 end):start()
