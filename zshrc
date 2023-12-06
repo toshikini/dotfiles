@@ -9,6 +9,7 @@
 # export VOLTA_FEATURE_PNPM=1
 
 export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
+export EDITOR='vim'
 
 # gitにpushしたくない環境変数は別ファイルに書いて.zshrcからインポート
 source ~/.env
