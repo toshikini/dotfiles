@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""
+ """"""""""""""""""""""""""""""""""""
 " エンコーディング
 """""""""""""""""""""""""""""""""""""
 
@@ -168,7 +168,7 @@ set formatoptions+=mM
 let g:mapleader = "\<Space>"
 
 " スペース + wでファイル保存
-nnoremap <Leader>w :w<CR>
+" nnoremap <Leader>w :w<CR>
 
 " 入力モード時のカーソル移動
 inoremap <C-j> <Down>
@@ -218,7 +218,7 @@ nnoremap <silent><Space>h    :hide<CR>
 nnoremap <silent><Space>s    :<C-u>w<CR>
 
 " 直近開いたファイルを開く
-nnoremap <Leader>e  :<C-u>/ oldfiles<Home>browse filter /
+" nnoremap <Leader>e  :<C-u>/ oldfiles<Home>browse filter /
 
 
 """""""""""""""""""""""""""""""""""""
@@ -266,6 +266,12 @@ call jetpack#begin()
   " :wしなくても自動保存
   Jetpack 'vim-scripts/vim-auto-save'
 
+  " カーソル移動を高速にする
+  Jetpack 'easymotion/vim-easymotion'
+
+  " スムーズにスクロールする
+  Jetpack 'yuttie/comfortable-motion.vim'
+
   " gitの操作をvimで行えるようにする
   " ステータスラインにブランチを表示するために使用
   Jetpack 'tpope/vim-fugitive'
@@ -282,10 +288,19 @@ call jetpack#begin()
 
   " ほぼ全てのフォーマットを網羅してるsyntax highlight
   Jetpack 'sheerun/vim-polyglot'
+ 
+  " markdownのsyntax highlight
+  Jetpack 'rhysd/vim-gfm-syntax'
+
+  " 置換をリアルタイム確認
+  Jetpack 'markonm/traces.vim'
+
+  " skimを使った曖昧検索
+  Jetpack 'lotabout/skim.vim'
 
   " Python
   " PEP8に準拠したインデント
-  Jetpack 'Vimjas/vim-python-pep8-indent'
+  " Jetpack 'Vimjas/vim-python-pep8-indent'
 call jetpack#end()
 
 
@@ -371,7 +386,7 @@ endfunction
 command! -bar LF call LF()
 
 " lfを起動するキーバインド
-nnoremap <leader>f :LF<cr>
+nnoremap <leader>l :LF<cr>
 
 
 
