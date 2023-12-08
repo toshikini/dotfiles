@@ -391,13 +391,11 @@ nnoremap <leader>l :LF<cr>
 
 
 """""""""""""""""""""""""""""""""""""
-" bufferの操作
-" 'bagrat/vim-buffet'を使用する
+" バッファの操作
 """""""""""""""""""""""""""""""""""""
 noremap <Tab> :bn<CR>
 noremap <S-Tab> :bp<CR>
-noremap <Leader><Tab> :Bw<CR>
-noremap <Leader><S-Tab> :Bw!<CR>
+noremap <Leader>w :bdelete<CR>
 
 
 """""""""""""""""""""""""""""""""""""
@@ -462,6 +460,9 @@ let g:auto_save = 1
 """""""""""""""""""""""""""""""""""""
 " 'vim-lsp'
 """""""""""""""""""""""""""""""""""""
+
+" 動的に色付けを行う
+let g:lsp_semantic_enabled = 1
 
 " vim-lspでよく使うコマンドのキーバインド
 " https://blog.micheam.com/2019/05/21/vim-lsp-setting-for-typescript/

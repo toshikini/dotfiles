@@ -144,7 +144,7 @@ alias cd=cdls
 # ローカルリポジトリの一覧を表示して選択をしたリポジトリパスに移動をする
 # 下記の記事を参考に
 # https://blog.abekoh.dev/posts/shell-2023
-project () {
+prj () {
   local project_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
   if [ -z "$project_path" ]; then
     return

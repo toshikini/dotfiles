@@ -5,7 +5,7 @@ layout {
   pane size=1 borderless=true {
     // https://github.com/dj95/zjstatus
     plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
-      format_left  "{mode} #[fg=#89B4FA,bold]{session} {tabs}"
+      format_left  "{mode} #[fg=#6C7086]{session} {tabs}"
       format_right "{command_git_branch} {datetime}"
       format_space ""
 
@@ -16,17 +16,36 @@ layout {
 
       hide_frame_for_single_pane "true"
 
-      mode_normal  "#[bg=blue] "
-      mode_tmux    "#[bg=#ffc387] "
+      mode_normal        "#[fg=#89B4FA] {name} "
+      mode_locked        "#[fg=#89B4FA] {name} "
+      mode_resize        "#[fg=#89B4FA] {name} "
+      mode_pane          "#[fg=#89B4FA] {name} "
+      mode_tab           "#[fg=#89B4FA] {name} "
+      mode_scroll        "#[fg=#89B4FA] {name} "
+      mode_enter_search  "#[fg=#89B4FA] {name} "
+      mode_search        "#[fg=#89B4FA] {name} "
+      mode_rename_tab    "#[fg=#89B4FA] {name} "
+      mode_rename_pane   "#[fg=#89B4FA] {name} "
+      mode_session       "#[fg=#89B4FA] {name} "
+      mode_move          "#[fg=#89B4FA] {name} "
+      mode_prompt        "#[fg=#89B4FA] {name} "
+      mode_tmux          "#[fg=#ffc387] {name} "
 
-      tab_normal   "#[fg=#6C7086] {name} "
-      tab_active   "#[fg=#9399B2,bold,italic] {name} "
+      // formatting for inactive tabs
+      tab_normal              "#[fg=#6C7086] {name} "
+      tab_normal_fullscreen   "#[fg=#6C7086] {name}[] "
+      tab_normal_sync         "#[fg=#6C7086] {name}<> "
+
+      // formatting for the current active tab
+      tab_active              "#[fg=#9399B2,bold,italic] {name} "
+      tab_active_fullscreen   "#[fg=#9399B2,bold,italic] {name}[] "
+      tab_active_sync         "#[fg=#9399B2,bold,italic] {name}<> "
 
       command_git_branch_command   "git rev-parse --abbrev-ref HEAD"
       command_git_branch_format    "#[fg=blue] {stdout} "
       command_git_branch_interval  "10"
 
-      datetime        "#[fg=#6C7086,bold] {format} "
+      datetime        "#[fg=#6C7086] {format} "
       datetime_format "%Y-%m-%d(%a) %H:%M"
       datetime_timezone "Japan"
     }
