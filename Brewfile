@@ -65,6 +65,9 @@ brew "lf"
 # topの高機能版
 brew "htop"
 
+# catの高機能版
+brew "bat"
+
 # pdfの中身を見るために
 # lfのプレビューで使用する
 brew "poppler"

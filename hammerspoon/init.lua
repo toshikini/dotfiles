@@ -317,3 +317,27 @@ kanaSwitcher = hs.eventtap.new(
 kanaSwitcher:start()
 
 
+-- HammerText
+-- https://gist.github.com/maxandersen/d09ebef333b0c7b7f947420e2a7bbbf5
+-- を参考にプログラムを改修
+function getGlobalIP()
+    local http = require("hs.http")
+    local status, body = http.get("http://api.ipify.org", nil)
+    if status == 200 then
+        return body
+    else
+        return "IP取得エラー"
+    end
+end
+
+ht = hs.loadSpoon("HammerText")
+ht.keywords ={
+  [",dt"] = function() return os.date("([[%Y-%m-%d]] %H:%M)") end,
+  [",##"] = function() return os.date("##\n([[%Y-%m-%d]] %H:%M)") end,
+  [",df"] = function() return os.date("%y%m%d_") end,
+  [",ip"] = getGlobalIP,
+  [",t"] = function() return os.date("%H:%M") end,
+  [",mt"] = "|   |   |   |\n|---|---|---|\n|   |   |   |\n|   |   |   |\n|   |   |   |",
+}
+ht:start()
+
