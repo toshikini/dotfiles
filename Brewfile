@@ -68,6 +68,9 @@ brew "htop"
 # catの高機能版
 brew "bat"
 
+# lsの高機能版
+brew "exa"
+
 # pdfの中身を見るために
 # lfのプレビューで使用する
 brew "poppler"

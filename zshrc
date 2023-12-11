@@ -114,19 +114,22 @@ if type trash > /dev/null 2>&1; then
 fi
 
 # lsコマンドのエイリアス
-case "${OSTYPE}" in
-darwin*)
-  alias ls="ls -G"
-  alias ll="ls -lG"
-  alias la="ls -laG"
-  ;;
-linux*)
-  alias l='ls -CF'
-  alias la='ls -A'
-  alias ll='ls -l'
-  alias ls='ls -h --color=always'
-  ;;
-esac
+# case "${OSTYPE}" in
+# darwin*)
+#   alias ls="ls -G"
+#   alias ll="ls -lG"
+#   alias la="ls -laG"
+#   ;;
+# linux*)
+#   alias l='ls -CF'
+#   alias la='ls -A'
+#   alias ll='ls -l'
+#   alias ls='ls -h --color=always'
+#   ;;
+# esac
+alias ls='exa'
+alias ll='exa -ahl --git'
+alias tree='exa -T --git-ignore'
 
 # cdと同時にls
 function cdls() {
