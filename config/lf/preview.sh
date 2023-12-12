@@ -32,6 +32,9 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.xls|*.xlsx)
 		xlsx2csv -- "$1" | batcommand --language=csv
 		;;
+	*.ppt|*.pptx)
+		pptx2txt "$1" - | fmt -w "$2"
+		;;
 	*.wav|*.mp3|*.flac|*.m4a|*.wma|*.ape|*.ac3|*.og[agx]|*.spx|*.opus|*.as[fx]|*.mka)
 		exiftool "$1"
 		;;

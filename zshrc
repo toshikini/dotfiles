@@ -21,6 +21,7 @@ source ~/.env
 export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 
 #################################

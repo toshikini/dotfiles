@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import pptx
+import sys
+
+# コマンドライン引数を取得
+args = sys.argv[1:]
+
+# 引数がない場合は終了
+if not args:
+    print("Usage: python script.py <file1.pptx> <file2.pptx> ...")
+    sys.exit(1)
+
+# 指定された各ファイルに対して処理を行う
+for fname in args:
+    print('File name: ', fname, '\n')
+    prs = pptx.Presentation(fname)
+
+    for i, sld in enumerate(prs.slides, start=1):
+        print(f'-- Page {i} --')
+        for shp in sld.shapes:
+            if shp.has_text_frame:
+                text = shp.text.strip().replace('\n', ' ')
+                if text:
+                    print(text)
+            if shp.has_table:
+                tbl = shp.table
+                row_count = len(tbl.rows)
+                col_count = len(tbl.columns)
+                for r in range(0, row_count):
+                    text = ''
+                    for c in range(0, col_count):
+                        cell = tbl.cell(r, c)
+                        paragraphs = cell.text_frame.paragraphs
+                        for paragraph in paragraphs:
+                            for run in paragraph.runs:
+                                text += run.text.strip().replace('\n', ' ')
+                            text += ', '
+                    print(text)
+        print()
