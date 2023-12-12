@@ -114,4 +114,8 @@ set icons
 # テキストファイル以外のプレビューはrangerのscope.shを使う
 # 下記を参考に設定
 # https://wiki.archlinux.jp/index.php/Lf
-set previewer "~/.config/ranger/scope.sh"
+# set previewer "~/.config/ranger/scope.sh"
+
+# プレビューの設定
+set previewer "~/.config/lf/preview.sh"
+set ratios 1:2:3
