@@ -11,7 +11,6 @@ set fileencodings=utf-8,sjis,euc-jp,iso-2022-jp
 " ファイルタイプを自動で検知する
 filetype on
 
-
 """""""""""""""""""""""""""""""""""""
 " 基本設定
 """""""""""""""""""""""""""""""""""""
@@ -263,6 +262,9 @@ call jetpack#begin()
   " https://momozo.tech/2021/02/27/vim%E3%83%9E%E3%83%BC%E3%82%AF%E3%81%93%E3%81%9Dvim%E3%81%AEvim%E3%81%9F%E3%82%8B%E6%89%80%E4%BB%A5/
   Jetpack 'MattesGroeger/vim-bookmarks'
 
+  " レジスタの内容を簡単に呼び出す
+  Jetpack 'LeafCage/yankround.vim'
+
   " カーソル移動を高速にする
   Jetpack 'easymotion/vim-easymotion'
 
@@ -472,3 +474,27 @@ nmap <buffer> <Leader>= <plug>(lsp-document-format)
 
 " skimのキーバインドを設定
 nnoremap <leader>L :Files<cr>
+
+
+
+"""""""""""""""""""""""""""""""""""""
+" 'LeafCage/yankround.vim'
+" yankとdeleteの履歴を簡単に遡れるようにする
+"""""""""""""""""""""""""""""""""""""
+" https://github.com/LeafCage/yankround.vim
+" https://leafcage.hateblo.jp/entry/2013/10/31/yankroundvim
+
+" 履歴保存件数
+let g:yankround_max_history = 100
+
+" 履歴の保存場所
+let g:yankround_dir = '~/.cache/yankround'
+
+nmap p <Plug>(yankround-p)
+xmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+xmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-j> <Plug>(yankround-prev)
+nmap <C-k> <Plug>(yankround-next)
