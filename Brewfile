@@ -28,6 +28,7 @@ brew "starship"
 # 色々選択肢はあるけどシンプルに使えるsheldonを入れてる
 brew "sheldon"
 
+
 ############################
 # Nerd Font For Terminal
 ############################
@@ -52,6 +53,9 @@ brew "ghq"
 
 # jsonをきれいに表示する
 brew "jq"
+
+# テキストファイルの文字コードを変換
+brew "nkf"
 
 # あいまい検索
 brew "sk"
@@ -165,6 +169,8 @@ cask "keepingyouawake"
 # hammerspoonで設定したので不要
 # cask "cmd-eikana"
 
+# スクリーンショットアノテーションツール
+cask "shottr"
 
 
 ############################
