@@ -293,6 +293,7 @@ call jetpack#begin()
   Jetpack 'markonm/traces.vim'
 
   " skimを使った曖昧検索
+  Jetpack 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
   Jetpack 'lotabout/skim.vim'
 
   " Python
@@ -464,3 +465,10 @@ nmap <buffer> <Leader>r <plug>(lsp-rename)
 nmap <buffer> K <Plug>(lsp-hover)
 nmap <buffer> <Leader>= <plug>(lsp-document-format)
 
+
+"""""""""""""""""""""""""""""""""""""
+" 'lotabout/skim.vim'
+"""""""""""""""""""""""""""""""""""""
+
+" skimのキーバインドを設定
+nnoremap <leader>L :Files<cr>
