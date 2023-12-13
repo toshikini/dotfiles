@@ -476,7 +476,6 @@ nmap <buffer> <Leader>= <plug>(lsp-document-format)
 nnoremap <leader>L :Files<cr>
 
 
-
 """""""""""""""""""""""""""""""""""""
 " 'LeafCage/yankround.vim'
 " yankとdeleteの履歴を簡単に遡れるようにする
@@ -498,3 +497,12 @@ xmap gp <Plug>(yankround-gp)
 nmap gP <Plug>(yankround-gP)
 nmap <C-j> <Plug>(yankround-prev)
 nmap <C-k> <Plug>(yankround-next)
+
+
+"""""""""""""""""""""""""""""""""""""
+" 'sheerun/vim-polyglot'
+"""""""""""""""""""""""""""""""""""""
+
+" svelteのsyntax highlightを有効化
+let g:vim_svelte_plugin_load_full_syntax = 1
+let g:vim_svelte_plugin_use_typescript = 1
