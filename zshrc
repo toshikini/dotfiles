@@ -153,35 +153,19 @@ alias ls='exa'
 alias ll='exa -ahl --git'
 alias tree='exa -T --git-ignore'
 
-# cdと同時にls
-function cdls() {
+# cdと同時にpwdとls
+function cdpwdls() {
   \cd $1;
   pwd;
   ls;
 }
-alias cd=cdls
+alias cd=cdpwdls
 
 # 過去のcdしたディレクトリをskで選んで移動する
 alias cdh='cd $(dirs -lv | sk --no-sort --prompt="Cd History > " | awk "{print \$2}")'
 
-# コマンド履歴をskで選んで実行する
-function select-history() {
-  BUFFER=$(history -n -r 1 | sk --no-sort --query "^$LBUFFER" --prompt="Command History > ")
-  CURSOR=$#BUFFER
-}
-zle -N select-history
-bindkey '^r' select-history
-
-# git addをskで選んで実行する
-function gita() {
-    local selected
-    selected=$(git status -s | sk -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
-    if [[ -n "$selected" ]]; then
-        selected=$(tr '\n' ' ' <<< "$selected")
-        git add $(echo $selected)
-        echo "Completed: git add $selected"
-    fi
-}
+# gitのルートディレクトリに移動する
+alias cdr='cd $(git rev-parse --show-toplevel)'
 
 
 #################################
@@ -203,5 +187,26 @@ prj () {
   else
     zellij action new-tab --layout project --name $project_name --cwd $project_path
   fi
+}
+
+
+# コマンド履歴をskで選んで実行する
+function select-history() {
+  BUFFER=$(history -n -r 1 | sk --no-sort --query "^$LBUFFER" --prompt="Command History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
+
+# git addをskで選んで実行する
+function gita() {
+    local selected
+    selected=$(git status -s | sk -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
+    if [[ -n "$selected" ]]; then
+        selected=$(tr '\n' ' ' <<< "$selected")
+        git add $(echo $selected)
+        echo "Completed: git add $selected"
+    fi
 }
 
