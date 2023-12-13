@@ -44,6 +44,24 @@ eval "$(starship init zsh)"
 # asdfを読み込む
 source $(brew --prefix asdf)/libexec/asdf.sh
 
+
+
+#################################
+# cd
+#################################
+cdpath=(~)
+
+# ディレクトリ名だけを入力した場合に、そこにcdする
+# .. で親ディレクトリに移動する
+setopt auto_cd
+
+# ディレクトリ移動時に、移動元をディレクトリスタックにpushする
+setopt auto_pushd
+
+# ディレクトリスタックに同じディレクトリがあった場合に追加しない
+setopt pushd_ignore_dups
+
+
 #################################
 # history
 #################################
@@ -59,6 +77,9 @@ SAVEHIST=20000
 
 # すでに存在するヒストリファイルにヒストリを追記
 setopt append_history
+
+# ヒストリファイルに保存するときに、余分なスペースを削除
+setopt hist_reduce_blanks
 
 # ヒストリファイルを複数のzshで共有
 setopt share_history
@@ -135,9 +156,32 @@ alias tree='exa -T --git-ignore'
 # cdと同時にls
 function cdls() {
   \cd $1;
+  pwd;
   ls;
 }
 alias cd=cdls
+
+# 過去のcdしたディレクトリをskで選んで移動する
+alias cdh='cd $(dirs -lv | sk --no-sort --prompt="Cd History > " | awk "{print \$2}")'
+
+# コマンド履歴をskで選んで実行する
+function select-history() {
+  BUFFER=$(history -n -r 1 | sk --no-sort --query "^$LBUFFER" --prompt="Command History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
+# git addをskで選んで実行する
+function gita() {
+    local selected
+    selected=$(git status -s | sk -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
+    if [[ -n "$selected" ]]; then
+        selected=$(tr '\n' ' ' <<< "$selected")
+        git add $(echo $selected)
+        echo "Completed: git add $selected"
+    fi
+}
 
 
 #################################
