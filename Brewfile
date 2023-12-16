@@ -172,6 +172,8 @@ cask "keepingyouawake"
 # スクリーンショットアノテーションツール
 cask "shottr"
 
+# rcloneでGoogle Driveをマウントするために
+cask "macfuse"
 
 ############################
 # タイル型ウインドウマネージャー yabai

@@ -338,6 +338,13 @@ ht.keywords ={
   [",ip"] = getGlobalIP,
   [",t"] = function() return os.date("%H:%M") end,
   [",mt"] = "|   |   |   |\n|---|---|---|\n|   |   |   |\n|   |   |   |\n|   |   |   |",
+  [",gca"] = 'git commit -m "Add: #',
+  [",gcf"] = 'git commit -m "Fix: #',
+  [",gci"] = 'git commit -m "Improve: #',
+  [",gcu"] = 'git commit -m "Update: #',
+  [",gcr"] = 'git commit -m "Remove: #',
+  [",gcm"] = 'git commit -m "Move: #',
+  [",gcc"] = 'git commit -m "Change: #'
 }
 ht:start()
 
