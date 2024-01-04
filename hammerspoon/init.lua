@@ -21,15 +21,14 @@ double_press.action = open_alacritty
 
 -- Alt TabでWindows風なウインドウ切り替え
 switcher = hs.window.switcher.new()
-switcher = hs.window.switcher.new()
 switcher.ui.showTitles =false
 switcher.ui.showExtraKeys = false
 switcher.ui.thumbnailSize = 140
 switcher.ui.showSelectedThumbnail = false
 switcher.ui.backgroundColor = {0, 0, 0, 0.8}
 switcher.ui.highlightColor = {0.3, 0.3, 0.3, 0.8}
-hs.hotkey.bind('alt','tab','Next window',function()switcher:next()end)
-hs.hotkey.bind('alt-shift','tab','Prev window',function()switcher:previous()end)
+hs.hotkey.bind('alt', 'tab', function() switcher:next() end)
+hs.hotkey.bind('alt-shift', 'tab', function() switcher:previous() end)
 
 
 -- 特定のキーで英字入力に切り替える
