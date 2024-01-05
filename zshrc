@@ -218,6 +218,6 @@ function gita() {
 
 # .zshrcを読み込み時に、rcloneのマウントをする
 # rclone mountというプロセスが存在するかを確認して、存在しなければマウントをする
-if [ -z "$(pgrep -f rclone\ mount)" ]; then
-  rclone mount googledrive-nishihatatoshikigmailcom: ~/GoogleDrive --daemon --cache-dir ~/.cache/rclone --vfs-cache-mode full
-fi
+# if [ -z "$(pgrep -f rclone\ mount)" ]; then
+#   rclone mount googledrive-nishihatatoshikigmailcom: ~/GoogleDrive --daemon --cache-dir ~/.cache/rclone --vfs-cache-mode full
+# fi
