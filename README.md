@@ -7,14 +7,15 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-**Git Clone**
+**Git Clone to ~/dotfiles**
 ```
+cd ~
 git clone https://github.com/aicro-nishihata/dotfiles.git
 ```
 
-**Link .zshrc**
+**Link config file**
 ```
-ln -s dotfiles/zshrc ~/.zshrc
+make link
 source ~/.zshrc
 ```
 
@@ -22,12 +23,3 @@ source ~/.zshrc
 ```
 make brew
 ```
-
-**Link config**
-```
-ln -s dotfiles/vimrc .vimrc
-ln -s dotfiles/hammerspoon ~/.hammerspoon
-ln -s dotfiles/gitconfig ~/.gitconfig
-ln -s dotfiles/config ~/.config
-```
-
