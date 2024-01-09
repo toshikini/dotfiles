@@ -161,8 +161,8 @@ function cdpwdls() {
 }
 alias cd=cdpwdls
 
-# 過去のcdしたディレクトリをskで選んで移動する
-alias cdh='cd $(dirs -lv | sk --no-sort --prompt="Cd History > " | awk "{print \$2}")'
+# 過去のcdしたディレクトリをskで選んで移動する。skで何も選択しない時は何もしない
+alias cdh='dir=$(dirs -lv | sk --no-sort --prompt="Cd History > " | awk "{print \$2}") && [ -n "$dir" ] && cd "$dir"'
 
 # gitのルートディレクトリに移動する
 alias cdr='cd $(git rev-parse --show-toplevel)'
