@@ -172,10 +172,6 @@ cask "keepingyouawake"
 # スクリーンショットアノテーションツール
 cask "shottr"
 
-# rcloneでGoogle Driveをマウントするために
-# rclone自体はbrew経由で入れるとmountコマンドが使えないので
-# 公式サイトからダウンロードしてインストール
-# cask "macfuse"
 
 ############################
 # タイル型ウインドウマネージャー yabai
