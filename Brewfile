@@ -69,6 +69,9 @@ brew "lf"
 # topの高機能版
 brew "htop"
 
+# コードのステップカウント
+brew "tokei"
+
 # catの高機能版
 brew "bat"
 
