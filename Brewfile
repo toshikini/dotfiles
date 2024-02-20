@@ -175,6 +175,9 @@ cask "keepingyouawake"
 # スクリーンショットアノテーションツール
 cask "shottr"
 
+# Google Driveの同期ツール
+cask "google-drive"
+
 
 ############################
 # タイル型ウインドウマネージャー yabai
