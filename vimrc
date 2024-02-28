@@ -456,6 +456,12 @@ let g:indent_guides_exclude_filetypes = ['help', 'tagbar']
 " 動的に色付けを行う
 let g:lsp_semantic_enabled = 1
 
+" エラーをステータスラインに表示
+let g:lsp_diagnostics_echo_cursor = 1
+
+" エラーを挿入モード中に表示しない
+let g:lsp_diagnostics_highlights_insert_mode_enabled = 0
+
 " vim-lspでよく使うコマンドのキーバインド
 " https://blog.micheam.com/2019/05/21/vim-lsp-setting-for-typescript/
 nmap gd <Plug>(lsp-definition)
