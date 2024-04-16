@@ -115,6 +115,7 @@ remapKey({'ctrl', 'cmd', 'alt'}, 'l', keyCode('right', {'cmd', 'alt'}))
 
 -- 特定のアプリケーション以外でのみキーバーインドを有効にする
 -- グローバル変数でイベントリスナーを保持
+--[[
 if not eventtapListeners then
   eventtapListeners = {}
 end
@@ -188,7 +189,7 @@ remapKey({'ctrl', 'cmd', 'alt'}, 'h', 'left', {'cmd', 'alt'})
 remapKey({'ctrl', 'cmd', 'alt'}, 'j', 'down', {'cmd', 'alt'})
 remapKey({'ctrl', 'cmd', 'alt'}, 'k', 'up', {'cmd', 'alt'})
 remapKey({'ctrl', 'cmd', 'alt'}, 'l', 'right', {'cmd', 'alt'})
-
+]]
 
 
 -- 特定のアプリケーションをショートカットで起動
