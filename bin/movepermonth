@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import shutil
+from datetime import datetime
+
+# 動画ファイルがあるフォルダのパスを実行時の引数の最初から取得
+source_dir = sys.argv[1]
+
+# 対応するファイル形式
+video_extensions = ['.mp4', '.mov', '.MOV']  # 必要に応じて他の動画ファイル形式を追加
+
+# フォルダ内の全ファイルを走査
+for filename in os.listdir(source_dir):
+    print(filename)
+
+    # ファイルの拡張子を確認
+    if any(filename.endswith(ext) for ext in video_extensions):
+        # ファイルの完全パス
+        file_path = os.path.join(source_dir, filename)
+
+        # ファイルの作成日時を取得
+        stat = os.stat(file_path)
+        creation_time = stat.st_birthtime
+        date = datetime.fromtimestamp(creation_time)
+
+        # 「YYYY-MM」形式のフォルダ名
+        folder_name = date.strftime('%Y年%m月')
+
+        file_prefix = date.strftime('%Y%m%d_')
+
+        # 新しいフォルダのパス
+        new_folder_path = os.path.join(source_dir, folder_name)
+
+        # フォルダが存在しない場合は作成
+        if not os.path.exists(new_folder_path):
+            os.makedirs(new_folder_path)
+
+        # ファイルをnew_folder_pathに移動し、ファイル名の先頭にfile_prefixを付ける
+        new_file_path = os.path.join(new_folder_path, file_prefix + filename)
+        shutil.move(file_path, new_file_path)

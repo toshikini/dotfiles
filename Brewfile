@@ -178,6 +178,10 @@ cask "shottr"
 # Google Driveの同期ツール
 cask "google-drive"
 
+# FortiClientのOSS版
+# VPNに接続するために必要
+brew "openfortivpn"
+
 
 ############################
 # タイル型ウインドウマネージャー yabai
@@ -212,6 +216,9 @@ cask "obsidian"
 
 # テレビ会議のzoom
 cask "zoom"
+
+# Microsoft リモート デスクトップ
+cask "microsoft-remote-desktop"
 
 
 ############################
