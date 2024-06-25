@@ -256,7 +256,7 @@ call jetpack#begin()
   Jetpack 'mengelbrecht/lightline-bufferline'
 
   " インデントをみやすくする
-  Jetpack 'nathanaelkane/vim-indent-guides'
+  " Jetpack 'nathanaelkane/vim-indent-guides'
 
   " マークを使いやすくする
   " https://momozo.tech/2021/02/27/vim%E3%83%9E%E3%83%BC%E3%82%AF%E3%81%93%E3%81%9Dvim%E3%81%AEvim%E3%81%9F%E3%82%8B%E6%89%80%E4%BB%A5/
