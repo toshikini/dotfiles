@@ -75,9 +75,6 @@ brew "tokei"
 # catの高機能版
 brew "bat"
 
-# lsの高機能版
-brew "exa"
-
 # pdfの中身を見るために
 # lfのプレビューで使用する
 brew "poppler"
@@ -85,6 +82,9 @@ brew "poppler"
 # 画像をターミナルで表示するために
 # lfのプレビューで使用する
 brew "chafa"
+
+# pngのファイルサイズを削減する
+brew "pngquant"
 
 
 ############################
