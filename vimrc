@@ -301,6 +301,10 @@ call jetpack#begin()
   " Python
   " PEP8に準拠したインデント
   " Jetpack 'Vimjas/vim-python-pep8-indent'
+
+  " rust.vim
+  Jetpack 'rust-lang/rust.vim'
+
 call jetpack#end()
 
 
@@ -512,3 +516,13 @@ nmap <C-k> <Plug>(yankround-next)
 " svelteのsyntax highlightを有効化
 let g:vim_svelte_plugin_load_full_syntax = 1
 let g:vim_svelte_plugin_use_typescript = 1
+
+
+"""""""""""""""""""""""""""""""""""""
+" 'rust-lang/rust.vim'
+"""""""""""""""""""""""""""""""""""""
+
+filetype plugin indent on
+
+" 保存時に自動でrustfmt
+let g:rustfmt_autosave = 1
