@@ -1,10 +1,10 @@
 # Brewfileを使ってインストールをする
 brew:
-	brew bundle cleanup --force
-	brew bundle
-	brew upgrade
+	export HOMEBREW_NO_ENV_HINTS=1 && \
+	brew bundle cleanup --force && \
+	brew bundle && \
+	brew upgrade && \
 	brew upgrade --cask --greedy
-
 
 # 設定ファイルをシンボリックリンクでつなぐ
 link:
