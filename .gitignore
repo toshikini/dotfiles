@@ -1,5 +1,6 @@
 Brewfile.lock.json
 /config/op/
+/config/gptme/
 /config/rclone/
 /config/github-copilot/
 .DS_Store
