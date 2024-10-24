@@ -4,7 +4,7 @@ brew:
 	brew bundle cleanup --force && \
 	brew bundle && \
 	brew upgrade && \
-	brew upgrade --cask --greedy
+	brew upgrade --cask
 
 # 設定ファイルをシンボリックリンクでつなぐ
 link:
