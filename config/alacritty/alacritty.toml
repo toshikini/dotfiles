@@ -59,7 +59,7 @@ history = 20000
 [selection]
 save_to_clipboard = true
 
-[shell]
+[terminal.shell]
 args = ["-l", "-c", "/opt/homebrew/bin/zellij attach --index 0 -c"]
 program = "/bin/zsh"
 
@@ -72,3 +72,5 @@ option_as_alt = "Both"
 [window.padding]
 x = 20
 y = 20
+
+[terminal]
