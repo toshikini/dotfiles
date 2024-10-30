@@ -185,9 +185,6 @@ cask "keepingyouawake"
 # スクリーンショットアノテーションツール
 cask "shottr"
 
-# Google Driveの同期ツール
-cask "google-drive"
-
 # FortiClientのOSS版
 # VPNに接続するために必要
 brew "openfortivpn"
