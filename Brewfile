@@ -189,6 +189,9 @@ cask "shottr"
 # VPNに接続するために必要
 brew "openfortivpn"
 
+# 動画のダウンロード
+brew "yt-dlp"
+
 
 ############################
 # タイル型ウインドウマネージャー yabai
