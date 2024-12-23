@@ -286,6 +286,7 @@ end)
 
 -- 左Cmdキーで英字、右Cmdキーで日本語へ入力切り替え
 -- この設定により「英字かな」のアプリは削除
+--[[
 local simpleCmd = false
 local map = hs.keycodes.map
 
@@ -315,6 +316,7 @@ kanaSwitcher = hs.eventtap.new(
   kanaSwitchEvent
 )
 kanaSwitcher:start()
+]]
 
 
 -- HammerText

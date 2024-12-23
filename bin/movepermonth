@@ -9,7 +9,7 @@ from datetime import datetime
 source_dir = sys.argv[1]
 
 # 対応するファイル形式
-video_extensions = ['.mp4', '.mov', '.MOV']  # 必要に応じて他の動画ファイル形式を追加
+video_extensions = ['.mp4', '.MP4', '.mov', '.MOV']  # 必要に応じて他の動画ファイル形式を追加
 
 # フォルダ内の全ファイルを走査
 for filename in os.listdir(source_dir):
