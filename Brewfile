@@ -182,9 +182,6 @@ cask "keepingyouawake"
 # hammerspoonで設定したので不要
 # cask "cmd-eikana"
 
-# スクリーンショットアノテーションツール
-cask "shottr"
-
 # FortiClientのOSS版
 # VPNに接続するために必要
 brew "openfortivpn"
