@@ -3,6 +3,7 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
 
 
 -- Ctrl 2回でalacrittyを起動
+--[[
 local double_press = require("ctrlDoublePress")
 local open_alacritty = function()
   local appName = "Alacritty"
@@ -17,6 +18,7 @@ end
 
 double_press.timeFrame = 0.5
 double_press.action = open_alacritty
+]]
 
 
 -- Alt TabでWindows風なウインドウ切り替え
