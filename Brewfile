@@ -195,6 +195,11 @@ cask "cleanshot"
 # アプリを綺麗にアンインストール
 cask "appcleaner"
 
+# マウスを快適に使うために
+cask "mac-mouse-fix"
+cask "linearmouse"
+
+
 ############################
 # タイル型ウインドウマネージャー yabai
 ############################
