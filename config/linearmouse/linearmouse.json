@@ -1,20 +1,14 @@
 {
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
-      "buttons" : {
-        "universalBackForward" : false
-      },
       "if" : {
         "device" : {
-          "vendorID" : "0x5957",
+          "productID" : "0x200",
           "productName" : "Keyball39",
-          "category" : "mouse",
-          "productID" : "0x200"
+          "vendorID" : "0x5957",
+          "category" : "mouse"
         }
-      },
-      "pointer" : {
-        "acceleration" : 2.0407,
-        "speed" : 0.0077
       },
       "scrolling" : {
         "speed" : {
@@ -24,8 +18,28 @@
           "vertical" : 2.13,
           "horizontal" : 3.2
         }
+      },
+      "buttons" : {
+        "universalBackForward" : false
+      },
+      "pointer" : {
+        "disableAcceleration" : false,
+        "speed" : 0.0077,
+        "acceleration" : 1.5956
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "productID" : "0x343",
+          "productName" : "Apple Internal Keyboard \/ Trackpad",
+          "category" : "trackpad",
+          "vendorID" : "0x5ac"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.7926
       }
     }
-  ],
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0"
+  ]
 }

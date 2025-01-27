@@ -80,6 +80,12 @@ set wildmenu
 nnoremap j gj
 nnoremap k gk
 
+" 大文字のhjklの動きを変える
+nmap J 15j
+nmap K 15k
+nmap H ^
+nmap L $
+
 " シンタックスハイライトの有効化
 syntax enable
 
@@ -474,7 +480,7 @@ nmap gr <plug>(lsp-references)
 nmap <buffer> <C-n> <plug>(lsp-next-error)
 nmap <buffer> <C-p> <plug>(lsp-previous-error)
 nmap <buffer> <Leader>r <plug>(lsp-rename)
-nmap <buffer> K <Plug>(lsp-hover)
+nmap <buffer> M <Plug>(lsp-hover)
 nmap <buffer> <Leader>= <plug>(lsp-document-format)
 
 
