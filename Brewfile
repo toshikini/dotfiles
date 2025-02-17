@@ -241,6 +241,8 @@ cask "zoom"
 # Microsoft リモート デスクトップ
 cask "microsoft-remote-desktop"
 
+# 回路設計
+cask "kicad"
 
 
 ############################

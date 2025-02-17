@@ -24,6 +24,10 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# asdfを読み込む
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
 
 #################################
 # 設定読み込み
@@ -43,7 +47,8 @@ eval "$(starship init zsh)"
 # eval "$(pyenv virtualenv-init -)"
 
 # asdfを読み込む
-source $(brew --prefix asdf)/libexec/asdf.sh
+# 下記は2025/02/12動かないのでPATHに書き換え
+# source $(brew --prefix asdf)/libexec/asdf.sh
 
 # rustup-initでインストールしたRustを有効にする
 source $HOME/.cargo/env
