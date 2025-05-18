@@ -203,6 +203,8 @@ cask "appcleaner"
 cask "mac-mouse-fix"
 cask "linearmouse"
 
+# Edge
+cask "microsoft-edge"
 
 ############################
 # タイル型ウインドウマネージャー yabai
