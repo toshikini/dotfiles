@@ -206,6 +206,9 @@ cask "linearmouse"
 # Edge
 cask "microsoft-edge"
 
+# Jump Desktop
+cask "jump-desktop-connect"
+
 ############################
 # タイル型ウインドウマネージャー yabai
 ############################
