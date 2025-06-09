@@ -1,4 +1,4 @@
-tap "homebrew/bundle"
+# tap "homebrew/bundle"
 
 ############################
 # Terminal
@@ -32,7 +32,7 @@ brew "sheldon"
 ############################
 # Nerd Font For Terminal
 ############################
-tap "homebrew/cask-fonts"
+# tap "homebrew/cask-fonts"
 
 # ターミナルで使うフォントは白源。きれい
 cask "font-hackgen"
@@ -194,14 +194,14 @@ cask "1password-cli"
 brew "yt-dlp"
 
 # スクリーンショットアノテーションツール
-cask "cleanshot"
+# cask "cleanshot"
 
 # アプリを綺麗にアンインストール
 cask "appcleaner"
 
 # マウスを快適に使うために
-cask "mac-mouse-fix"
-cask "linearmouse"
+# cask "mac-mouse-fix"
+# cask "linearmouse"
 
 # Edge
 cask "microsoft-edge"
@@ -263,7 +263,7 @@ mas "Microsoft Word", id: 462054704
 mas "Kindle", id: 302584613
 
 # LINEもmacからメッセージ書けるようにする
-mas "LINE", id: 539883307
+# mas "LINE", id: 539883307
 
 
 ############################
