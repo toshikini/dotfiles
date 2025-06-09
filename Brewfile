@@ -61,7 +61,7 @@ brew "nkf"
 brew "sk"
 
 # rmしたらmacのゴミ箱に移動するようにする
-brew "trash"
+# brew "trash"
 
 # TUIのファイルマネージャー
 brew "lf"
@@ -175,10 +175,10 @@ cask "1password-cli"
 # Spotlightの高機能版
 # Alfredでクリップボード履歴やスニペットも使ってる
 # Alfredの代替としてRaycastも気になってるけどAlfredの有料版にお金払ってしまった
-cask "alfred"
+# cask "alfred"
 
 # スリープさせずにずっと起動させておきたい時のために
-cask "keepingyouawake"
+# cask "keepingyouawake"
 
 # 英字キーボードでCmd単体で押した時に日本語キーボードの
 # 「英数」「かな」キーのように入力方法を切り替える
@@ -188,7 +188,7 @@ cask "keepingyouawake"
 
 # FortiClientのOSS版
 # VPNに接続するために必要
-brew "openfortivpn"
+# brew "openfortivpn"
 
 # 動画のダウンロード
 brew "yt-dlp"
@@ -224,27 +224,14 @@ cask "jump-desktop-connect"
 # Cask Application
 ############################
 
-# 2段階認証アプリはAuthyを使ってる
-# 複数端末で使えてMacからも使えるので便利
-cask "authy"
-
 # Chromiumベースのブラウザ
 # タブをサイド表示にできるのでWebアプリのタブをピンしても気にならないので気に入ってる
 # これを入れてから個別にChrome、Slack、Google Chat、Mailのアプリは使わなくなった
 cask "brave-browser"
 
-# ブラウザでfigma開いていると重たくなるのでアプリを入れる
-cask "figma"
-
 # Markdownエディタ
 # Notion -> Craftと使ってきて今はObsidianをiCloudで同期して使ってる
 cask "obsidian"
-
-# テレビ会議のzoom
-cask "zoom"
-
-# Microsoft リモート デスクトップ
-cask "microsoft-remote-desktop"
 
 # 回路設計
 cask "kicad"
