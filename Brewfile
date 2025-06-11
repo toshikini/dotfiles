@@ -67,40 +67,42 @@ brew "sk"
 brew "lf"
 
 # topの高機能版
-brew "htop"
+# brew "htop"
 
 # コードのステップカウント
-brew "tokei"
+# brew "tokei"
 
 # catの高機能版
 brew "bat"
 
 # pdfの中身を見るために
 # lfのプレビューで使用する
-brew "poppler"
+# brew "poppler"
 
 # 画像をターミナルで表示するために
 # lfのプレビューで使用する
-brew "chafa"
+# brew "chafa"
 
 # pngのファイルサイズを削減する
-brew "pngquant"
+# brew "pngquant"
 
 # コマンドラインからLLMを実行する
-brew "gptme"
+# brew "gptme"
 
 # 画像を圧縮する
-brew "guetzli"
+# brew "guetzli"
 
 
 ############################
-# プログラミング言語のバージョン管理ツール asdf
+# プログラミング言語のバージョン管理ツール
 ############################
 
 # PythonもNode.jsもRubyもbrewや*envからasdfに移行
 # asdf経由でPython, Ruby, Node.js, npm, Poetryを入れる
-brew "asdf"
+# brew "asdf"
 
+# さらにasdfからmiscに移行
+brew "mise"
 
 ############################
 # Python
@@ -194,10 +196,10 @@ cask "1password-cli"
 brew "yt-dlp"
 
 # スクリーンショットアノテーションツール
-# cask "cleanshot"
+cask "cleanshot"
 
 # アプリを綺麗にアンインストール
-cask "appcleaner"
+# cask "appcleaner"
 
 # マウスを快適に使うために
 # cask "mac-mouse-fix"
