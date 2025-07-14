@@ -236,7 +236,7 @@ cask "brave-browser"
 cask "obsidian"
 
 # 回路設計
-cask "kicad"
+# cask "kicad"
 
 
 ############################
