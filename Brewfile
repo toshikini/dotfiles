@@ -141,7 +141,10 @@ brew "rustup"
 # vimのプラグインが昔より便利になって統合開発環境ぽく使えるので、
 # vscodeからvimにメインのエディタを変更
 # mac標準のviではなくvimの最新版を使うためにbrew経由で入れる
-brew "vim"
+# brew "vim"
+
+# neovimに変更した([[2025-08-13]] 15:57)
+brew "neovim"
 
 # Escで入力モードを抜ける時に日本語入力から英字入力に戻すためにim-selectを入れる
 # hammerspoonで設定したので不要
