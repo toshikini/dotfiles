@@ -336,8 +336,8 @@ end
 
 ht = hs.loadSpoon("HammerText")
 ht.keywords ={
-  [",dt"] = function() return os.date("([[%Y-%m-%d]] %H:%M)") end,
-  [",##"] = function() return os.date("##\n([[%Y-%m-%d]] %H:%M)") end,
+  [",dt"] = function() return os.date("([[%Y-%m]]-%d %H:%M)") end,
+  [",##"] = function() return os.date("##\n([[%Y-%m]]-%d %H:%M)") end,
   [",df"] = function() return os.date("%y%m%d_") end,
   [",ip"] = function() return getGlobalIP() end,
   [",t"] = function() return os.date("%H:%M") end,
