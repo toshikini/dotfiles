@@ -214,6 +214,9 @@ cask "microsoft-edge"
 # Jump Desktop
 cask "jump-desktop-connect"
 
+# App Cleaner
+cask "appcleaner"
+
 ############################
 # タイル型ウインドウマネージャー yabai
 ############################
@@ -256,7 +259,7 @@ brew "mas"
 
 # Adobe Creative Cloudを入れると重たくなるので
 # LightroomはApp Store経由で入れる
-mas "Adobe Lightroom", id: 1451544217
+# mas "Adobe Lightroom", id: 1451544217
 
 # OfficeはApp Store経由で使うものだけ入れる
 # Microsoftのサイト経由でダウンローダー使うとOutlookとか色々入ってしまうので
