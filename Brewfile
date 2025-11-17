@@ -211,11 +211,15 @@ cask "cleanshot"
 # Edge
 cask "microsoft-edge"
 
+# ChatGPT Atlas
+cask "chatgpt-atlas"
+
 # Jump Desktop
 cask "jump-desktop-connect"
 
 # App Cleaner
 cask "appcleaner"
+
 
 ############################
 # タイル型ウインドウマネージャー yabai
@@ -244,6 +248,8 @@ cask "obsidian"
 # 回路設計
 # cask "kicad"
 
+# figma
+cask "figma"
 
 ############################
 # App Store

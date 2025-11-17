@@ -208,6 +208,7 @@ end
 registerAppLauncer("B", "Brave Browser")
 registerAppLauncer("A", "Alacritty")
 registerAppLauncer("O", "Obsidian")
+registerAppLauncer("E", "Microsoft Edge")
 
 
 -- Cmd + Q を1.5秒以上押したら終了
