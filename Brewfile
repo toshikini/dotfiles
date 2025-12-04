@@ -220,6 +220,9 @@ cask "jump-desktop-connect"
 # App Cleaner
 cask "appcleaner"
 
+# zoom
+cask "zoom"
+
 
 ############################
 # タイル型ウインドウマネージャー yabai
@@ -278,6 +281,9 @@ mas "Kindle", id: 302584613
 
 # LINEもmacからメッセージ書けるようにする
 # mas "LINE", id: 539883307
+
+# 1password for safari
+mas "1Password for Safari", id: 1569813296
 
 
 ############################
