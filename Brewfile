@@ -280,10 +280,13 @@ mas "Microsoft Word", id: 462054704
 mas "Kindle", id: 302584613
 
 # LINEもmacからメッセージ書けるようにする
-# mas "LINE", id: 539883307
+mas "LINE", id: 539883307
 
 # 1password for safari
 mas "1Password for Safari", id: 1569813296
+
+# Adblock for Safari
+mas "280blocker", id: 1071235820
 
 
 ############################
