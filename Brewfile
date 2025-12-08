@@ -285,8 +285,8 @@ mas "LINE", id: 539883307
 # 1password for safari
 mas "1Password for Safari", id: 1569813296
 
-# Adblock for Safari
-mas "280blocker", id: 1071235820
+# AdGuard for Safari
+mas "AdGuard Mini", id: 1440147259
 
 
 ############################
