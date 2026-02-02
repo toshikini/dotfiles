@@ -132,7 +132,7 @@ brew "mise"
 
 # Rustはbrew経由でrustを入れるかrustupで入れるか2択
 # rustupでバージョン管理もできるのでrustupで入れる
-brew "rustup"
+# brew "rustup"
 
 ############################
 # VIM
@@ -175,7 +175,7 @@ brew "docker-compose"
 # パスワードマネージャー
 # ブラウザのパスワードマネージャーは使わず全て1Passwordに寄せてる
 cask "1password"
-cask "1password-cli"
+# cask "1password-cli"
 
 # Spotlightの高機能版
 # Alfredでクリップボード履歴やスニペットも使ってる
@@ -201,18 +201,15 @@ brew "yt-dlp"
 # スクリーンショットアノテーションツール
 cask "cleanshot"
 
-# アプリを綺麗にアンインストール
-# cask "appcleaner"
-
 # マウスを快適に使うために
 # cask "mac-mouse-fix"
 # cask "linearmouse"
 
 # Edge
-cask "microsoft-edge"
+# cask "microsoft-edge"
 
 # ChatGPT Atlas
-cask "chatgpt-atlas"
+# cask "chatgpt-atlas"
 
 # Jump Desktop
 cask "jump-desktop-connect"
@@ -242,7 +239,7 @@ cask "zoom"
 # Chromiumベースのブラウザ
 # タブをサイド表示にできるのでWebアプリのタブをピンしても気にならないので気に入ってる
 # これを入れてから個別にChrome、Slack、Google Chat、Mailのアプリは使わなくなった
-cask "brave-browser"
+# cask "brave-browser"
 
 # Markdownエディタ
 # Notion -> Craftと使ってきて今はObsidianをiCloudで同期して使ってる
@@ -252,7 +249,7 @@ cask "obsidian"
 # cask "kicad"
 
 # figma
-cask "figma"
+# cask "figma"
 
 ############################
 # App Store
