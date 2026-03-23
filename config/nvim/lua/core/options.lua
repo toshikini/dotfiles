@@ -42,7 +42,3 @@ opt.undofile = true
 opt.autoindent = true
 opt.clipboard:append("unnamedplus") -- Neovim推奨：OSのクリップボードと完全に同期
 opt.formatoptions:append("mM")
-
--- コメントの色を指定（LuaのAPIを使用）
-vim.api.nvim_set_hl(0, "Comment", { ctermfg = 248, fg = "gray" })
-

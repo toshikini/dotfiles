@@ -65,12 +65,12 @@ program = "/bin/zsh"
 
 [window]
 decorations = "buttonless"
-opacity = 0.85
+opacity = 0.93
 startup_mode = "Windowed"
 option_as_alt = "Both"
 
 [window.padding]
-x = 20
-y = 20
+x = 10
+y = 10
 
 [terminal]
