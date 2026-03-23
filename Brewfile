@@ -61,7 +61,7 @@ brew "nkf"
 brew "sk"
 
 # rmしたらmacのゴミ箱に移動するようにする
-# brew "trash"
+brew "trash"
 
 # TUIのファイルマネージャー
 brew "lf"
@@ -183,7 +183,7 @@ cask "1password"
 # cask "alfred"
 
 # スリープさせずにずっと起動させておきたい時のために
-# cask "keepingyouawake"
+cask "keepingyouawake"
 
 # 英字キーボードでCmd単体で押した時に日本語キーボードの
 # 「英数」「かな」キーのように入力方法を切り替える

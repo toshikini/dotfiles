@@ -9,7 +9,9 @@
 # export VOLTA_FEATURE_PNPM=1
 
 export HOMEBREW_BREWFILE=~/dotfiles/Brewfile
-export EDITOR='vim'
+export EDITOR='nvim'
+alias vi="nvim"
+alias vim="nvim"
 
 # gitにpushしたくない環境変数は別ファイルに書いて.zshrcからインポート
 source ~/.env
@@ -28,6 +30,8 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
+# miseを読み込む
+eval "$(mise activate zsh)"
 
 #################################
 # 設定読み込み
@@ -140,7 +144,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:
 # 下記を参考にした
 # https://qiita.com/TomokiYamashit3/items/d0e0fbbc736400e0aa39
 if type trash > /dev/null 2>&1; then
-    alias rm='trash -F'
+    alias rm='trash'
 fi
 
 # lsコマンドのエイリアス
