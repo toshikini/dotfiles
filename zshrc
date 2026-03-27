@@ -218,3 +218,37 @@ function gita() {
         echo "Completed: git add $selected"
     fi
 }
+
+
+# 複数ファイルを圧縮する
+mozjpeg_batch() {
+  # 引数が渡されていない場合の処理
+  if [ $# -eq 0 ]; then
+    echo "使い方: mozjpeg_batch <ファイル1> <ファイル2> ..."
+    return 1
+  fi
+
+  for file in "$@"; do
+    if [[ -f "$file" ]]; then
+      local base="${file%.*}"
+      local ext="${file##*.}"
+      local output="${base}_min.${ext}"
+      
+      echo "圧縮中: $file -> $output"
+      
+      # djpegで一度展開し、パイプ(|)でcjpegに渡して圧縮する
+      djpeg "$file" | cjpeg -quality 85 > "$output"     
+
+      if [ $? -eq 0 ]; then
+        echo "完了: $output"
+      else
+        echo "エラー: '$file' の圧縮に失敗しました。"
+        # エラー時に生成されてしまった空のファイルを削除
+        rm "$output"
+      fi
+    else
+      echo "エラー: '$file' は見つかりません。"
+    fi
+  done
+  echo "すべての圧縮が完了しました。"
+}

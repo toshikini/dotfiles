@@ -90,7 +90,7 @@ brew "bat"
 # brew "gptme"
 
 # 画像を圧縮する
-# brew "guetzli"
+brew "mozjpeg"
 
 
 ############################
