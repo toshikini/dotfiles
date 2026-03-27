@@ -21,13 +21,13 @@ return {
     -- キーバインド
     keys = {
       { "<C-space>", "<csonmd>lua vim.lsp.completion.get()<CR>", mode = "i", desc = "手動補完トリガー" },
-      { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>",  desc = "定義へジャンプ" },
-      { "M",  "<cmd>lua vim.lsp.buf.hover()<CR>",       desc = "ドキュメント表示" },
-      { "gr", "<cmd>lua vim.lsp.buf.references()<CR>",  desc = "参照箇所を表示" },
+      { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "定義へジャンプ" },
+      { "M", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "ドキュメント表示" },
+      { "gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "参照箇所を表示" },
       { "<Leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", desc = "名前の変更" },
       { "ge", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "エラー詳細を表示" },
     },
-    
+
     config = function()
       -- 補完メニューの設定
       vim.opt.completeopt = {
@@ -40,8 +40,8 @@ return {
       -- インストールするLSPサーバー
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "ts_ls", "rust_analyzer", "gopls", "html", "cssls", 
-          "htmx", "ruby_lsp", "pyright", "lua_ls",
+          "ts_ls", "rust_analyzer", "gopls", "html", "cssls",
+          "ruby_lsp", "pyright", "lua_ls",
         },
       })
 
@@ -57,14 +57,14 @@ return {
             local chars = {}
             for i = 32, 126 do table.insert(chars, string.char(i)) end
             client.server_capabilities.completionProvider.triggerCharacters = chars
-            
+
             -- ネイティブ自動補完を有効化
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
           end
 
           -- 保存時の自動フォーマット
           if not client:supports_method('textDocument/willSaveWaitUntil')
-            and client:supports_method('textDocument/formatting') then
+              and client:supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
               -- 競合を防ぐため clear=false
               group = vim.api.nvim_create_augroup('my.lsp.format', { clear = false }),
