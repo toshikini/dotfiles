@@ -252,3 +252,13 @@ mozjpeg_batch() {
   done
   echo "すべての圧縮が完了しました。"
 }
+
+
+
+#################################
+# zellijの起動
+#################################
+if [[ -z "$ZELLIJ" ]]; then
+    eval "$(direnv hook zsh)"
+    zellij attach --create main
+fi

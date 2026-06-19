@@ -60,7 +60,7 @@ history = 20000
 save_to_clipboard = true
 
 [terminal.shell]
-args = ["-l", "-c", "/opt/homebrew/bin/zellij attach --index 0 -c"]
+args = ["-l"]
 program = "/bin/zsh"
 
 [window]
