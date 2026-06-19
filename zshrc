@@ -14,7 +14,7 @@ alias vi="nvim"
 alias vim="nvim"
 
 # gitにpushしたくない環境変数は別ファイルに書いて.zshrcからインポート
-source ~/.env
+[[ -f ~/.env ]] && source ~/.env
 
 #################################
 # PATH
@@ -55,7 +55,7 @@ eval "$(starship init zsh)"
 # source $(brew --prefix asdf)/libexec/asdf.sh
 
 # rustup-initでインストールしたRustを有効にする
-source $HOME/.cargo/env
+[[ -f ~/.cargo/env ]] && source ~/.cargo/env
 
 
 #################################

@@ -197,6 +197,7 @@ cask "keepingyouawake"
 
 # 動画のダウンロード
 brew "yt-dlp"
+brew "ffmpeg"
 
 # スクリーンショットアノテーションツール
 cask "cleanshot"
@@ -249,7 +250,7 @@ cask "obsidian"
 # cask "kicad"
 
 # figma
-# cask "figma"
+cask "figma"
 
 ############################
 # App Store

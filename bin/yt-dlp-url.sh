@@ -8,6 +8,7 @@ fi
 
 URL_FILE="$1"
 # FORMAT="bestvideo+bestaudio/best"  # ダウンロードフォーマット
+FORMAT="bv[vcodec!~='^(vp0?9|av0?1)']+ba[ext='m4a']"
 
 # === URLファイルの存在確認 ===
 if [[ ! -f "$URL_FILE" ]]; then
@@ -23,8 +24,8 @@ while IFS= read -r url; do
   fi
 
   echo "ダウンロード開始: $url"
-  # yt-dlp -f "$FORMAT" "$url"
-  yt-dlp "$url"
+  yt-dlp -f "$FORMAT" "$url"
+  # yt-dlp "$url"
 done < "$URL_FILE"
 
 echo "=== すべてのダウンロードが完了しました ==="
