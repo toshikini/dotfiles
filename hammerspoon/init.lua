@@ -27,8 +27,8 @@ switcher.ui.showTitles = false
 switcher.ui.showThumbnails = false
 switcher.ui.showSelectedThumbnail = false
 switcher.ui.showExtraKeys = false
-switcher.ui.backgroundColor = {0, 0, 0, 0.8}
-switcher.ui.highlightColor = {0.3, 0.3, 0.3, 0.8}
+switcher.ui.backgroundColor = { 0, 0, 0, 0.8 }
+switcher.ui.highlightColor = { 0.3, 0.3, 0.3, 0.8 }
 hs.hotkey.bind('alt', 'tab', function() switcher:next() end)
 hs.hotkey.bind('alt-shift', 'tab', function() switcher:previous() end)
 
@@ -36,7 +36,7 @@ hs.hotkey.bind('alt-shift', 'tab', function() switcher:previous() end)
 -- 特定のキーで英字入力に切り替える
 -- Escapeキー vimでノーマルモードに戻る時に英字入力にする
 -- Cmd + Spaceキー Alfredを起動した時に英字入力にする
-switchToEisuOnEscape = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(e)
+switchToEisuOnEscape = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(e)
   if hs.keycodes.map[e:getKeyCode()] == 'escape' then
     hs.eventtap.keyStroke({}, 'eisu', 0)
   elseif e:getFlags()['cmd'] and hs.keycodes.map[e:getKeyCode()] == 'space' then
@@ -59,6 +59,7 @@ function applicationWatcher(appName, eventType, appObject)
     end)
   end
 end
+
 appWatcher = hs.application.watcher.new(applicationWatcher)
 appWatcher:start()
 
@@ -196,10 +197,10 @@ remapKey({'ctrl', 'cmd', 'alt'}, 'l', 'right', {'cmd', 'alt'})
 
 -- 特定のアプリケーションをショートカットで起動
 local app_map = {}
-local mash = {"cmd", "ctrl"}
+local mash = { "cmd", "ctrl" }
 local function registerAppLauncer(modifier, app)
   table.insert(app_map, string.lower(modifier) .. " - " .. app)
-  hs.hotkey.bind(mash, modifier, function ()
+  hs.hotkey.bind(mash, modifier, function()
     -- hs.alert.show('Cmd + Ctrl + '..modifier, 2) -- 動作確認用
     hs.application.launchOrFocus(app)
   end)
@@ -214,7 +215,7 @@ registerAppLauncer("E", "Microsoft Edge")
 -- Cmd + Q を1.5秒以上押したら終了
 local qStartTime = 0.0
 local qDuration = 1.5
-hs.hotkey.bind({"cmd"}, "Q", function()
+hs.hotkey.bind({ "cmd" }, "Q", function()
   qStartTime = hs.timer.secondsSinceEpoch()
 end, function()
   local qEndTime = hs.timer.secondsSinceEpoch()
@@ -224,7 +225,7 @@ end)
 
 
 -- ウインドウ操作
-local prefix = {"cmd", "ctrl"}
+local prefix = { "cmd", "ctrl" }
 
 -- Command + Ctrl + ↑ : フルスクリーン
 hs.hotkey.bind(prefix, "Up", function()
@@ -280,7 +281,7 @@ hs.hotkey.bind(prefix, "Down", function()
 
   f.x = max.x + (max.w * 0.2)
   f.y = max.y + (max.h * 0.2)
-  f.w = max.w * 0.6 
+  f.w = max.w * 0.6
   f.h = max.h * 0.6
 
   win:setFrame(f)
@@ -336,7 +337,7 @@ function getGlobalIP()
 end
 
 ht = hs.loadSpoon("HammerText")
-ht.keywords ={
+ht.keywords = {
   [",dt"] = function() return os.date("([[%Y-%m]]-%d %H:%M)") end,
   [",##"] = function() return os.date("##\n([[%Y-%m]]-%d %H:%M)") end,
   [",df"] = function() return os.date("%y%m%d_") end,
@@ -353,3 +354,71 @@ ht.keywords ={
 }
 ht:start()
 
+
+-- クリップボード履歴
+local clipboardHistory = {}
+local maxHistory = 10
+local lastContent = hs.pasteboard.getContents()
+
+-- 0.5秒ごとにクリップボードをチェックするタイマーに変更
+local clipboardTimer = hs.timer.doEvery(0.5, function()
+  local currentContent = hs.pasteboard.getContents()
+
+  -- 中身が空、または前回チェック時から変化がない場合は無視
+  if not currentContent or currentContent == "" or currentContent == lastContent then
+    return
+  end
+
+  -- 前回値を更新
+  lastContent = currentContent
+
+  -- 既存の履歴内にある重複を削除
+  for i, v in ipairs(clipboardHistory) do
+    if v == currentContent then
+      table.remove(clipboardHistory, i)
+      break
+    end
+  end
+
+  -- 先頭に新しい履歴を追加
+  table.insert(clipboardHistory, 1, currentContent)
+
+  -- 10件を超えたら古いものを削除
+  if #clipboardHistory > maxHistory then
+    table.remove(clipboardHistory)
+  end
+end)
+clipboardTimer:start()
+
+-- 選択メニュー（Chooser）の作成
+local clipboardChooser = hs.chooser.new(function(choice)
+  if choice then
+    lastContent = choice.text -- 自分が貼り付けたものでタイマーが反応しないようにする
+    hs.pasteboard.setContents(choice.text)
+    hs.timer.doAfter(0.1, function()
+      hs.eventtap.keyStroke({ "cmd" }, "v")
+    end)
+  end
+end)
+
+-- メニューを開く関数
+local function showClipboardHistory()
+  local choices = {}
+  for i, text in ipairs(clipboardHistory) do
+    local subText = text:gsub("\n", " ↵ "):sub(1, 60)
+    table.insert(choices, {
+      text = text,
+      subText = string.format("[%d] %s", i, subText)
+    })
+  end
+
+  if #choices == 0 then
+    hs.alert.show("クリップボード履歴が空です")
+  else
+    clipboardChooser:choices(choices)
+    clipboardChooser:show()
+  end
+end
+
+-- ショートカットキーの設定 (Option + V)
+hs.hotkey.bind({ "alt" }, "V", showClipboardHistory)

@@ -252,6 +252,10 @@ cask "obsidian"
 # figma
 cask "figma"
 
+# Hasselblad Phocus
+cask "phocus"
+
+
 ############################
 # App Store
 ############################
