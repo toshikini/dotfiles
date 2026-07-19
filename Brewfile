@@ -92,6 +92,8 @@ brew "bat"
 # 画像を圧縮する
 brew "mozjpeg"
 
+# Claude Code
+cask "claude-code"
 
 ############################
 # プログラミング言語のバージョン管理ツール
@@ -213,7 +215,7 @@ cask "cleanshot"
 # cask "chatgpt-atlas"
 
 # Jump Desktop
-cask "jump-desktop-connect"
+# cask "jump-desktop-connect"
 
 # App Cleaner
 cask "appcleaner"
