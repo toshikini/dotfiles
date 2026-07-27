@@ -20,6 +20,9 @@ cask "hammerspoon"
 # TmuxでもいいけどRust製という理由でzellij
 brew "zellij"
 
+# zellij の代替として
+brew "herdr"
+
 # zshのコマンドプロンプトの見た目をよくするために
 # 設定なしでデフォルトで使い勝手いいのでstarshipを使ってる
 brew "starship"

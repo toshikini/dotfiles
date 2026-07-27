@@ -4,5 +4,6 @@ ruby.compile = false
 [tools]
 go = "latest"
 node = "latest"
+poetry = "latest"
 python = "latest"
 ruby = "latest"
