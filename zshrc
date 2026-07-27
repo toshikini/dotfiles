@@ -258,7 +258,17 @@ mozjpeg_batch() {
 #################################
 # zellijの起動
 #################################
-if [[ -z "$ZELLIJ" ]]; then
-    eval "$(direnv hook zsh)"
-    zellij attach --create main
+# if [[ -z "$ZELLIJ" ]]; then
+#     eval "$(direnv hook zsh)"
+#     zellij attach --create main
+# fi
+
+
+
+#################################
+# herdr の起動
+#################################
+# インタラクティブシェルで、かつまだHerdr内にいない場合だけ自動起動
+if [[ $- == *i* ]] && [[ -z "$HERDR_ENV" ]] && command -v herdr >/dev/null 2>&1; then
+  exec herdr
 fi

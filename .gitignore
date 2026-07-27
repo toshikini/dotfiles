@@ -4,3 +4,9 @@ Brewfile.lock.json
 /config/rclone/
 /config/github-copilot/
 .DS_Store
+session.json
+*.log
+.plugins.lock
+plugins/state/
+plugins/cache/
+*.sock
